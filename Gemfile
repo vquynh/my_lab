@@ -16,6 +16,10 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# For docker
+gem 'unicorn', '~> 5.1'
+gem 'sidekiq', '~> 5.0'
+gem 'redis-rails', '~> 5.0', '>= 5.0.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
