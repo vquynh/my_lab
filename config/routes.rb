@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :equipment
   get 'about', to: 'page#about'
 
   get 'contact', to: 'page#contact'
