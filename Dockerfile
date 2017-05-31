@@ -1,5 +1,5 @@
-# Use the barebones version of Ruby 2.2.3.
-FROM ruby:2.4.1-alpine
+# Use the a alpine version of Ruby 2.4.1.
+FROM ruby:2.4.1-slim
 
 # Optionally set a maintainer name to let people know who made this image.
 MAINTAINER Nguyen Viet Quynh <ng.viet.quynh@gmail.com>
@@ -24,6 +24,7 @@ WORKDIR $INSTALL_PATH
 # drastically increase build times when your gems do not change.
 COPY Gemfile Gemfile
 RUN bundle install
+
 
 # Copy in the application code from your work station at the current directory
 # over to the working directory.
