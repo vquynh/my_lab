@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :equipment, except: [:show]
+  get 'equipment/:id', to: 'equipment#show', as: 'equipment_show'
+
   get 'about', to: 'page#about'
 
   get 'contact', to: 'page#contact'
