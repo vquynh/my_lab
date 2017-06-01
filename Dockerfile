@@ -1,4 +1,6 @@
-# Use the barebones version of Ruby 2.2.3.
+
+# Use the a alpine version of Ruby 2.4.1.
+feature-undocker
 FROM ruby:2.4.1-slim
 
 # Optionally set a maintainer name to let people know who made this image.
@@ -25,6 +27,7 @@ WORKDIR $INSTALL_PATH
 COPY Gemfile Gemfile
 RUN gem install nokogiri
 RUN bundle install
+
 
 # Copy in the application code from your work station at the current directory
 # over to the working directory.
