@@ -1,6 +1,6 @@
 class EquipmentController < ApplicationController
   def index
-    @labor_items = Equipment.all
+    @labor_items = Equipment.el
   end
 
   def new
