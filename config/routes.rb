@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
 
   resources :equipment, except: [:show]
+
+  get 'electric-equipment', to: 'equipment#el'
+
+  get 'measuring-equipment', to: 'equipment#measure'
+
+  get 'audio-equipment', to: 'equipment#audio'
+
+  get 'video-equipment', to: 'equipment#video'
+
+  get 'software', to: 'equipment#software'
+
+  get 'misc-equipment', to: 'equipment#misc'
+
   get 'equipment/:id', to: 'equipment#show', as: 'equipment_show'
 
   get 'about', to: 'page#about'

@@ -1,6 +1,30 @@
 class EquipmentController < ApplicationController
   def index
+    @labor_items = Equipment.all
+  end
+
+  def el
     @labor_items = Equipment.el
+  end
+
+  def measure
+    @labor_items = Equipment.measure
+  end
+
+  def misc
+    @labor_items = Equipment.misc
+  end
+
+  def software
+    @labor_items = Equipment.software
+  end
+
+  def audio
+    @labor_items = Equipment.audio
+  end
+
+  def video
+    @labor_items = Equipment.video
   end
 
   def new

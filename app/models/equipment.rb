@@ -2,7 +2,7 @@ class Equipment < ApplicationRecord
   belongs_to :category
   belongs_to :equipment_status
 
-  def self.messure
+  def self.measure
     where(category_id: 1)
   end
 
