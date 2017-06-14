@@ -19,7 +19,16 @@ c4 = Category.create! :name => "Video Technology"
 c5 = Category.create! :name => "Software & Computer"
 c6 = Category.create! :name => "Miscellaneous"
 
+10.times do |project_item|
+  Project.create!(
+      name: "Project #{project_item}",
+      description: "An interesting project that students can take part in. The needed equipment for the project can be found in the laboratory's database.",
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+  )
+end
 
+puts "10 projects created"
 
 
 10.times do |available_item|
