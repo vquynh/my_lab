@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :projects
   resources :equipment, except: [:show]
 
   get 'electric-equipment', to: 'equipment#el'
