@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :projects
+  resources :projects, except: [:show]
   resources :equipment, except: [:show]
+
+  get 'projects/:id', to: 'projects#show', as: 'project_show'
 
   get 'electric-equipment', to: 'equipment#el'
 
