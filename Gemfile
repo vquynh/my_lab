@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.1'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# Use devise for authentication
+gem 'devise', '~> 4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 #Use bootstrap
