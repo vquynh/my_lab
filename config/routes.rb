@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :equipment, except: [:show]
 
   get 'electric-equipment', to: 'equipment#el'
