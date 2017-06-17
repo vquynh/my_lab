@@ -1,4 +1,4 @@
-<h1>Edit a Equipment Information</h1>
+<h1>Edit a equipment</h1>
 <%= form_for(@labor_item) do |form| %>
 
     <div class="field">
@@ -8,12 +8,18 @@
 
     <div class="field">
       <%= form.label :inv_nr %>
-      <%= form.text_area :inv_nr %>
+      <%= form.text_field :inv_nr %>
     </div>
 
     <div class="field">
-      <%= form.label :status %>
-      <%= form.text_area :status %>
+      <%= form.label :quantity %>
+      <%= form.number_field :quantity %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category %>
+      <%= form.collection_select :category_id, Category.all,:id,:name, include_blank: true %>
+
     </div>
 
     <div class="field">
