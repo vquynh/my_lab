@@ -9,11 +9,11 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params.require(:Project).permit(:name, :inv_nr, :description))
+    @project = Project.new(project_params)
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to Project_path, notice: 'Project was successfully added.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully added.' }
       else
         format.html { render :new }
       end
@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     respond_to do |format|
-      if @project.update(params.require(:Project).permit(:name, :description))
-        format.html { redirect_to Project_path, notice: 'Project was successfully updated.' }
+      if @project.update(project_params)
+        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -49,8 +49,16 @@ class ProjectsController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to Project_url, notice: 'Project was removed.' }
+      format.html { redirect_to project_url, notice: 'Project was removed.' }
     end
+  end
+
+  private
+  def project_params
+    params.require(:project).permit(:name, 
+                                    :description
+                                    )
+
   end
 
 end

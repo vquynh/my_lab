@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170618082532) do
     t.string "name"
     t.integer "inv_nr"
     t.text "description"
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.text "thumb_image"
     t.text "main_image"
     t.bigint "category_id"

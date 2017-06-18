@@ -32,11 +32,11 @@ class EquipmentController < ApplicationController
   end
 
   def create
-    @labor_item = Equipment.new(params.require(:equipment).permit(:name, :inv_nr, :description))
+    @labor_item = Equipment.new(equipment_params)
 
     respond_to do |format|
       if @labor_item.save
-        format.html { redirect_to equipment_path, notice: 'Equipment item was successfully created.' }
+        format.html { redirect_to equipment_index_path, notice: 'Equipment item was successfully created.' }
       else
         format.html { render :new }
       end
@@ -51,8 +51,8 @@ class EquipmentController < ApplicationController
     @labor_item = Equipment.find(params[:id])
 
     respond_to do |format|
-      if @labor_item.update(params.require(:equipment).permit(:name, :inv_nr, :description))
-        format.html { redirect_to equipment_path, notice: 'Item was successfully updated.' }
+      if @labor_item.update(equipment_params)
+        format.html { redirect_to equipment_index_path, notice: 'Item was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -74,6 +74,18 @@ class EquipmentController < ApplicationController
     respond_to do |format|
       format.html { redirect_to equipment_url, notice: 'Item was removed.' }
     end
+  end
+
+  private 
+  def equipment_params
+    params.require(:equipment).permit(:name,
+                                      :inv_nr, 
+                                      :description, 
+                                      :quantity, 
+                                      :category_id, 
+                                      :equipment_status_id
+                                      )
+
   end
 
 end
