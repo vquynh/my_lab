@@ -19,7 +19,11 @@
     <div class="field">
       <%= form.label :category %>
       <%= form.collection_select :category_id, Category.all,:id,:name, include_blank: true %>
+    </div>
 
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.collection_select :equipment_status_id, EquipmentStatus.all,:id,:name, include_blank: true %>
     </div>
 
     <div class="field">

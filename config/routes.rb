@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
+
+  resources :projects, except: [:show]
+
   resources :equipment, except: [:show]
+
+  get 'projects/:id', to: 'projects#show', as: 'project_show'
 
   get 'electric-equipment', to: 'equipment#el'
 

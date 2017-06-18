@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616041148) do
+ActiveRecord::Schema.define(version: 20170618082532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170616041148) do
     t.string "name"
     t.integer "inv_nr"
     t.text "description"
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.text "thumb_image"
     t.text "main_image"
     t.bigint "category_id"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170616041148) do
 
   create_table "equipment_statuses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "thumb_image"
+    t.text "main_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
