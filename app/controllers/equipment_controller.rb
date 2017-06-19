@@ -1,10 +1,12 @@
 class EquipmentController < ApplicationController
   def index
     @labor_items = Equipment.all
+    @page_title = "MyLab Equipment"
   end
 
   def el
     @labor_items = Equipment.el
+    @page_title = "MyLab Electronic Equipment"
   end
 
   def measure
@@ -61,6 +63,7 @@ class EquipmentController < ApplicationController
 
   def show
     @labor_item = Equipment.find(params[:id])
+    @page_title = "Mylab #{@labor_item.name}"
   end
 
   def destroy
