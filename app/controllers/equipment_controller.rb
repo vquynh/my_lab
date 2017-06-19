@@ -1,4 +1,6 @@
 class EquipmentController < ApplicationController
+  layout "equipment"
+  
   def index
     @labor_items = Equipment.all
     @page_title = "MyLab Equipment"
