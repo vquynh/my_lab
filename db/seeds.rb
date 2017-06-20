@@ -6,11 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+BookingStatus.create! :name => "Submitted"
+BookingStatus.create! :name => "Read"
+BookingStatus.create! :name => "Confirmed"
+BookingStatus.create! :name => "Unclaimed"
+BookingStatus.create! :name => "Claimed"
+BookingStatus.create! :name => "Overdue"
+BookingStatus.create! :name => "Returned"
+
 av = EquipmentStatus.create! :name => "Available"
 rs = EquipmentStatus.create! :name => "Reserved"
 br = EquipmentStatus.create! :name => "Borrowed"
 bk = EquipmentStatus.create! :name => "Defective"
 ur = EquipmentStatus.create! :name => "Under repair"
+
 
 c1 = Category.create! :name => "Messuring Technology"
 c2 = Category.create! :name => "Electrical Engineering"
