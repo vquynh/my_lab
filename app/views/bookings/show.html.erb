@@ -1,0 +1,11 @@
+<h1>Show Booking Details</h1>
+
+
+<p><%= @booking.pickup_date %></p>
+<p><%= @booking.return_date %></p>
+<em><%= @booking.message %></em>
+
+<%= link_to 'Edit', edit_booking_path(@booking) if logged_in?(:labor_staff) %>
+<%= link_to 'Back', bookings_path %>
+
+

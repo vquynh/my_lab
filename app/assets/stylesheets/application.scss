@@ -13,7 +13,11 @@
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+/*
+ *= require jquery-ui/datepicker
+ */
 @import "bootstrap";
+
 
 body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */

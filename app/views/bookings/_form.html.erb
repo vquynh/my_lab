@@ -1,0 +1,20 @@
+<%= form_for(@booking) do |form| %>
+
+    <div class="field">
+      <%= form.label :pickup_date %>
+      <%= form.date_select :pickup_date %>
+    </div>
+    <div class="field">
+      <%= form.label :return_date %>
+      <%= form.date_select :return_date %>
+    </div>
+
+    <div class="field">
+      <%= form.label :message %>
+      <%= form.text_area :message %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>
