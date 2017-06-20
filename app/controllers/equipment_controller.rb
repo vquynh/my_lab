@@ -1,6 +1,7 @@
 class EquipmentController < ApplicationController
   layout "equipment"
-  
+  access all: [:show, :index, :el, :measure, :misc, :software, :audio, :video], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+
   def index
     @labor_items = Equipment.all
     @page_title = "MyLab Equipment"

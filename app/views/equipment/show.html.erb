@@ -7,4 +7,7 @@
 <p><%= @labor_item.equipment_status.name %></p>
 <em><%= @labor_item.description %></em>
 
+<%= link_to 'Edit', edit_equipment_path(@labor_item) if logged_in?(:labor_staff) %>
+<%= link_to 'Back', equipment_index_path %>
+
 

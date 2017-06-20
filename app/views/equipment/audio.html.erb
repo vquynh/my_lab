@@ -1,5 +1,5 @@
 <h1>Audio Equipment</h1>
-<%= link_to "Add New Equipment", new_equipment_path %>
+<%= link_to "Add New Equipment", new_equipment_path if logged_in?(:labor_staff) %>
 <%= render partial: 'labor_item', collection: @labor_items %>
 
 

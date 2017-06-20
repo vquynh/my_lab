@@ -6,4 +6,7 @@
 <h1><%= @project.name %></h1>
 <em><%= @project.description %></em>
 
+<%= link_to 'Edit', edit_project_path(@project) if logged_in?(:labor_staff) %>
+<%= link_to 'Back', projects_path %>
+
 

@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   layout "project"
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+
 
   def index
     @projects = Project.all
