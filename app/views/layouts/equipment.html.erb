@@ -10,10 +10,10 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
+    <%= render "shared/application_nav" %>
+
     <%= login_helper %>
     <%= yield %>
-    <%= render "shared/nav", location: 'top' %>
 
     <% if session[:source] %>
       <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
