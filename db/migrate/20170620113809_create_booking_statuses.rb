@@ -4,6 +4,5 @@ class CreateBookingStatuses < ActiveRecord::Migration[5.1]
       t.string :name
 
       t.timestamps
-    end
   end
 end

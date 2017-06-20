@@ -1,5 +1,3 @@
-  <p><%= link_to project.name, project_show_path(project)  %></p>
-  <p><%= project.description %></p>
-  <%= image_tag project.thumb_image unless project.thumb_image.nil? %>
-  <%= link_to "Edit", edit_project_path(project) %>
-  <%= link_to "Remove Item", project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p><%= link_to booking.UUID, booking_show_path(booking)  %></p>
+  <%= link_to "Edit", edit_booking_path(booking) %>
+  <%= link_to "Remove Item", booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
