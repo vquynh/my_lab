@@ -2,6 +2,7 @@
   <p><%= labor_item.inv_nr %></p>
   <p><%= labor_item.category.name %></p>
   <p><%= labor_item.equipment_status.name %></p>
+  <p>Added <%= distance_of_time_in_words(labor_item.created_at, Time.now) %></p>
   <p><%= labor_item.description %></p>
   <%= image_tag labor_item.thumb_image unless labor_item.thumb_image.nil? %>
   <%= link_to "Edit", edit_equipment_path(labor_item) %>
