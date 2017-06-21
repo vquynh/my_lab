@@ -6,13 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-BookingStatus.create! :name => "Submitted"
-BookingStatus.create! :name => "Read"
-BookingStatus.create! :name => "Confirmed"
-BookingStatus.create! :name => "Unclaimed"
-BookingStatus.create! :name => "Claimed"
-BookingStatus.create! :name => "Overdue"
-BookingStatus.create! :name => "Returned"
+BookingStatus.create(name: 'Submitted')
+BookingStatus.create(name: 'Read')
+BookingStatus.create(name: 'Confirmed')
+BookingStatus.create(name: 'Unclaimed')
+BookingStatus.create(name: 'Claimed')
+BookingStatus.create(name: 'Overdue')
+BookingStatus.create(name: 'Returned')
+
+puts "created booking statuses"
 
 av = EquipmentStatus.create! :name => "Available"
 rs = EquipmentStatus.create! :name => "Reserved"
@@ -20,6 +22,7 @@ br = EquipmentStatus.create! :name => "Borrowed"
 bk = EquipmentStatus.create! :name => "Defective"
 ur = EquipmentStatus.create! :name => "Under repair"
 
+puts "created equipment statuses"
 
 c1 = Category.create! :name => "Messuring Technology"
 c2 = Category.create! :name => "Electrical Engineering"
@@ -27,6 +30,8 @@ c3 = Category.create! :name => "Audio Technology"
 c4 = Category.create! :name => "Video Technology"
 c5 = Category.create! :name => "Software & Computer"
 c6 = Category.create! :name => "Miscellaneous"
+
+puts "created equipment categories"
 
 10.times do |project_item|
   Project.create!(

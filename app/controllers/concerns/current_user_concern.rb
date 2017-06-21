@@ -12,7 +12,6 @@ module CurrentUserConcern
         guest.last_name = "User"
         guest.email = "guest@example.com"
         guest
-
     end
 
 end

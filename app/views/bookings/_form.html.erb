@@ -1,6 +1,14 @@
 <%= form_for(@booking) do |form| %>
 
     <div class="field">
+      <%= form.label :project %>
+      <%= form.collection_select :project_id, Project.all,:id,:name, include_blank: true %>
+    </div>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.collection_select :booking_status_id, BookingStatus.all,:id,:name, include_blank: true %>
+    </div>
+    <div class="field">
       <%= form.label :pickup_date %>
       <%= form.date_select :pickup_date %>
     </div>

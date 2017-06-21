@@ -1,12 +1,13 @@
 class BookingsController < ApplicationController
-  access user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+  access user: {except: [:destroy, :new, :create, :update, :edit, :indexadmin]}, labor_staff: :all
 
 
+  def indexadmin
+    @bookings = Booking.all
+  end
+  
   def index
-      if current_user.is_a?(labor_staff)
-          @bookings = Booking.all
-      else
-          @bookings = Booking.find(params[:user_id])
+    @bookings = current_user.bookings
   end
 
   def new
@@ -14,10 +15,10 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = current_user.bookings.build(booking_params)
 
     respond_to do |format|
-      if @booking.save
+      if @booking.save!
         format.html { redirect_to bookings_path, notice: 'Booking was successfully submitted.' }
       else
         format.html { render :new }
@@ -61,7 +62,10 @@ class BookingsController < ApplicationController
   private
   def booking_params
     params.require(:booking).permit(:pickup_date,
-                                    :return_date, 
+                                    :return_date,
+                                    :current_user,
+                                    :project_id,
+                                    :booking_status_id,
                                     :message
                                     )
 

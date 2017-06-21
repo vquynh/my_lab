@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :bookings
+
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
 
   resources :projects, except: [:show]
 
   resources :equipment, except: [:show]
+
+  resources :bookings do
+      get 'indexadmin', on: :collection
+  end
 
   get 'projects/:id', to: 'projects#show', as: 'project_show'
 
