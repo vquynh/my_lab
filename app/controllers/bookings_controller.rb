@@ -59,7 +59,7 @@ class BookingsController < ApplicationController
     end
   end
 
-  private
+private
   def booking_params
     params.require(:booking).permit(:pickup_date,
                                     :return_date,

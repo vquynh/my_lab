@@ -4,6 +4,7 @@ class EquipmentController < ApplicationController
 
   def index
     @labor_items = Equipment.all
+    @booking_item = current_booking.booking_items.new
     @page_title = "MyLab Equipment"
   end
 
@@ -82,7 +83,7 @@ class EquipmentController < ApplicationController
     end
   end
 
-  private 
+private 
   def equipment_params
     params.require(:equipment).permit(:name,
                                       :inv_nr, 

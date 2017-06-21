@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'booking_items/create'
+
+  get 'booking_items/update'
+
+  get 'booking_items/destroy'
+
+  get 'list/show'
 
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
 
   resources :projects, except: [:show]
 
   resources :equipment, except: [:show]
+
+  resource :list, only: [:show]
+
+  resources :booking_items, only: [:create, :update, :destroy]
 
   resources :bookings do
       get 'indexadmin', on: :collection

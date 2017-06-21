@@ -1,5 +1,12 @@
-<h1>Equipment Items</h1>
-
-<%= render partial: 'labor_item', collection: @labor_items %>
 
 
+
+<h3 class="text-center">Equipment Items for Booking</h3>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <% @labor_items.each do |labor_item| %>
+      <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
+    <% end %>
+  </div>
+</div>

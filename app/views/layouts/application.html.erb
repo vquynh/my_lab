@@ -13,7 +13,18 @@
     <p class="alert"><%= alert %></p>
 
     <%= render "shared/application_nav"%>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <h1><%= link_to "My Lab", root_path %></h1>
+        </div>
+        <div class="col-xs-6 text-right">
+          <h1 class="list_text"><%= render 'layouts/list_text' %></h1>
+        </div>
+      </div>
+      <hr>
+      <%= yield %>
+    </div>
 
     <% if session[:source] %>
       <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
