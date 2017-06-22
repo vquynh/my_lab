@@ -13,6 +13,6 @@
   </p>
 <% else %>
   <% @booking_items.each do |booking_item| %>
-    <%= render 'list/list_row', labor_item: booking_item.labor_item, booking_item: booking_item %>
+    <%= render 'list/list_row', labor_item: booking_item.equipment, booking_item: booking_item %>
   <% end %>
 <% end %>

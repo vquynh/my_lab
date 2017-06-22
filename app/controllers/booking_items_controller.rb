@@ -13,7 +13,7 @@ class BookingItemsController < ApplicationController
     @booking_items = @booking.booking_items
   end
 
-  def destroy
+  def destroys
     @booking = current_booking
     @booking_item = @booking.booking_items.find(params[:id])
     @booking_item.destroy

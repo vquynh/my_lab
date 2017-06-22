@@ -13,6 +13,7 @@
     <p class="alert"><%= alert %></p>
 
     <%= render "shared/application_nav"%>
+    <%= render 'layouts/list_text' %>
     <%= yield %>
     <% if session[:source] %>
       <p> Thanks for visiting Mylab from <%= session[:source] %> </p>

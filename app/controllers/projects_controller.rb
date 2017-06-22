@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  layout "project"
+  layout "application"
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
 
 
