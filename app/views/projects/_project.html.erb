@@ -1,5 +1,10 @@
-  <p><%= link_to project.name, project_show_path(project)  %></p>
-  <p><%= project.description %></p>
+
+<div class="home-card">
   <%= image_tag project.thumb_image unless project.thumb_image.nil? %>
-  <%= link_to "Edit", edit_project_path(project) %>
-  <%= link_to "Remove Item", project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p class="home-card-text"><%= link_to project.name, project_show_path(project)  %></p>
+  <p class="home-card-text"><%= project.description %></p>
+  <% if logged_in?(:labor_staff) %> 
+    <button class="btn btn-default"><%= link_to "Edit", edit_project_path(project) %></button>
+    <button class="btn btn-danger"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <% end %>
+</div>
