@@ -18,6 +18,11 @@
  */
 @import "bootstrap";
 
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
 
 body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */
@@ -52,16 +57,28 @@ body {
   padding-bottom: 3rem;
   background-color: #f7f7f7;
 }
+
+.home-card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+.home-card img {
+  margin-bottom: .75rem;
+  margin-right: 1rem;
+}
+.home-card-text {
+  font-size: 85%;
+  text-align: left;
+}
 /*
  * Globals
  */
 
 /* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
+
 
 /* Custom default button */
 .btn-secondary,
@@ -84,7 +101,7 @@ body {
   background-color: #333;
 }
 body {
-  color: #fff;
+  color: white;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
@@ -241,4 +258,19 @@ body {
   float: none;
 }
 
+.headline {
+  text-align: left;
+}
+.link-text {
+  color: black
+}
 
+.about {
+  margin-top: 10rem;
+}
+.mylab > a {
+  color: white;
+}
+.listtext {
+  margin-top: 5rem;
+}

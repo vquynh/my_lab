@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Project.create(name: 'Choose Project')
+
+puts "created placeholder project"
+
 BookingStatus.create(name: 'Submitted')
 BookingStatus.create(name: 'Read')
 BookingStatus.create(name: 'Confirmed')
@@ -24,7 +28,7 @@ ur = EquipmentStatus.create! :name => "Under repair"
 
 puts "created equipment statuses"
 
-c1 = Category.create! :name => "Messuring Technology"
+c1 = Category.create! :name => "Measuring Technology"
 c2 = Category.create! :name => "Electrical Engineering"
 c3 = Category.create! :name => "Audio Technology"
 c4 = Category.create! :name => "Video Technology"
@@ -43,22 +47,6 @@ puts "created equipment categories"
 end
 
 puts "10 projects created"
-
-
-10.times do |available_item|
-  Equipment.create!(
-      name: "Equipment #{available_item}",
-      description: "A cool equipment of my laboratory that is available for borrowing.",
-      equipment_status: av,
-      quantity: 1,
-      main_image: "http://via.placeholder.com/600x400",
-      thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
-      category_id: rand(1...6)
-  )
-end
-
-puts "6 available equipment items created"
 
 6.times do |reserved_item|
   Equipment.create!(
@@ -116,3 +104,17 @@ puts "3 defective equipment items created"
   )
 end
 puts "3 under repair equipment items created"
+
+10.times do |available_item|
+  Equipment.create!(
+      name: "Equipment #{available_item}",
+      description: "A cool equipment of my laboratory that is available for borrowing.",
+      equipment_status: av,
+      quantity: 1,
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+      inv_nr: rand(10000...100000),
+      category_id: rand(1...6)
+  )
+end
+puts "10 available equipment items created"

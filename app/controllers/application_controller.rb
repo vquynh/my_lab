@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       booking = Booking.new
       booking.user_id = current_user.id
       booking.booking_status_id = 1
-      booking.project_id = 11
+      booking.project_id = 1
       booking
     end
   end

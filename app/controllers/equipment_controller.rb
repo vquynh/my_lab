@@ -1,6 +1,6 @@
 class EquipmentController < ApplicationController
   layout "equipment"
-  access all: [:show, :index, :el, :measure, :misc, :software, :audio, :video], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+  access all: [:show, :index, :el, :measure, :misc, :computer, :audio, :video], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
 
   def index
     @labor_items = Equipment.all
@@ -21,8 +21,8 @@ class EquipmentController < ApplicationController
     @labor_items = Equipment.misc
   end
 
-  def software
-    @labor_items = Equipment.software
+  def computer
+    @labor_items = Equipment.computer
   end
 
   def audio
