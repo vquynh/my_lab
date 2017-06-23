@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  access user: {except: [:destroy, :new, :create, :update, :edit, :indexadmin]}, labor_staff: :all
+  access user: {except: [:destroy, :new, :create, :indexadmin]}, labor_staff: :all
 
 
   def indexadmin
@@ -46,6 +46,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @booking_items = current_booking.booking_items
+    @labor_item = Equipment.joins(:booking_items)
   end
 
   def destroy

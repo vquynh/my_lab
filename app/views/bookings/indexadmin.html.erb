@@ -1,6 +1,6 @@
-<h1>All Bookings</h1>
-
-<%= link_to "Add New Booking", new_booking_path if logged_in?(:labor_staff)  %>
-
+<h3 class="listtext">All Bookings</h3>
 <%= render @bookings %>
+
+<%= link_to "Add New Booking", new_booking_path, class: "btn btn-success" if logged_in?(:labor_staff)  %>
+
 

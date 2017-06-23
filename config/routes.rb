@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "admin-board" => "admin_board#show"
+
   get 'booking_items/create'
 
   get 'booking_items/update'

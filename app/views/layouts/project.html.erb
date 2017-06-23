@@ -14,7 +14,11 @@
     <%= login_helper %>
 
     <%= yield %>
-    <%= render "shared/nav", location: 'top' %>
+    <% if logged_in?(:labor_staff) %>
+      <%= render "shared/admin_application_nav"%>
+    <% else%>
+      <%= render "shared/application_nav"%>
+    <% end %>
 
     <% if session[:source] %>
       <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
