@@ -40,7 +40,7 @@ puts "created equipment categories"
 10.times do |project_item|
   Project.create!(
       name: "Project #{project_item}",
-      description: "An interesting project that students can take part in. The needed equipment for the project can be found in the laboratory's database.",
+      description: "An interesting project that students can take part in. The necessary equipment for the project can be found in the laboratory's database.",
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
   )
@@ -108,7 +108,7 @@ puts "3 under repair equipment items created"
 10.times do |available_item|
   Equipment.create!(
       name: "Equipment #{available_item}",
-      description: "A cool equipment of my laboratory that is available for borrowing.",
+      description: "Cool equipment frommy laboratory that is available for borrowing.",
       equipment_status: av,
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
