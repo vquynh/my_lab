@@ -13,11 +13,14 @@ class BookingItemsController < ApplicationController
     @booking_items = @booking.booking_items
   end
 
-  def destroys
+  def destroy
     @booking = current_booking
     @booking_item = @booking.booking_items.find(params[:id])
     @booking_item.destroy
     @booking_items = @booking.booking_items
+    respond_to do |format|
+      format.html { redirect_to mylist_path, notice: 'Item was removed.' }
+    end
   end
 
 private

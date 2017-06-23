@@ -1,11 +1,46 @@
-<h1>Show Booking Details</h1>
+<div class="regist">
+  <div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="card-title">Booking Details </h3>
+                <p>Created At: <%= @booking.created_at %></p>
+                <p>Pickup Date: <%= @booking.pickup_date %></p>
+                <p>Return Date: <%= @booking.return_date %></p>
+                <p>Message: <%= @booking.message %></p>
+                <button class="btn btn-info"><%= link_to 'Edit', edit_booking_path(@booking) if logged_in?(:labor_staff) %></button>
+                <button class="btn btn-info"><%= link_to 'Back', bookings_path %></button>
+            </div>
+            <div class="col-md-6">
+                <h3 class="card-title">Booking Items </h3>
+                    <% if !@booking_item.nil? && @booking_item.errors.any? %>
+                        <div class="alert alert-danger">
+                            <ul>
+                            <% @booking_item.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                            <% end %>
+                            </ul>
+                        </div>
+                        <% end %>
+                        <% if @booking_items.size == 0 %>
+                            <p class="text-center">
+                                There are no items in the equipment list.
+                            </p>
+                            <%= link_to 'Equipment', equipment_index_path, class: "btn btn-info" if logged_in?(:user) %>
+                        <% else %>
+                            <% @booking_items.each do |booking_item| %>
+                                <%= @labor_item.name %>
+                                <%= @booking_item.quantity %>
+                                <button class="btn btn-info"><%= link_to 'Edit List', mylist_path %></button>
+                        <% end %>
+                    <% end %>
+            </div>
+        </div>
+    </div>
+  </div>
+</div> 
 
 
-<p><%= @booking.pickup_date %></p>
-<p><%= @booking.return_date %></p>
-<em><%= @booking.message %></em>
 
-<%= link_to 'Edit', edit_booking_path(@booking) if logged_in?(:labor_staff) %>
-<%= link_to 'Back', bookings_path %>
-
+ 
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'booking_items/destroy'
 
-  get 'list/show'
+  get 'mylist', to: 'list#show'
 
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   get 'video-equipment', to: 'equipment#video'
 
-  get 'software', to: 'equipment#software'
+  get 'computer-equipment', to: 'equipment#computer'
 
   get 'misc-equipment', to: 'equipment#misc'
 

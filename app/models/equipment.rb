@@ -20,7 +20,7 @@ class Equipment < ApplicationRecord
     where(category_id: 4)
   end
 
-  def self.software
+  def self.computer
     where(category_id: 5)
   end
 

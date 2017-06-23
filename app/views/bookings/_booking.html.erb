@@ -1,3 +1,22 @@
-  <p><%= link_to booking.uuid, booking_path(booking)  %></p>
-  <%= link_to "Edit", edit_booking_path(booking) %>
-  <%= link_to "Remove Item", booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="well">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="item-img" >
+        <%=  link_to booking.uuid, booking_path(booking) %>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+          <div class="btn-group">
+            <%= link_to "Remove", booking_path(booking), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to "Edit", edit_booking_path(booking), class: "btn btn-info" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
