@@ -56,7 +56,7 @@ puts "10 projects created"
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
       inv_nr: rand(10000...100000),
-      category_id: rand(1...6)
+      category_id: rand(1...7)
 
   )
 end
@@ -71,7 +71,7 @@ puts "6 reserved equipment items created"
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
       inv_nr: rand(10000...100000),
-      category_id: rand(1...6)
+      category_id: rand(1...7)
 
   )
 end
@@ -85,7 +85,7 @@ puts "6 borrowed equipment items created"
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
       inv_nr: rand(10000...100000),
-      category_id: rand(1...6)
+      category_id: rand(1...7)
 
   )
 end
@@ -100,7 +100,7 @@ puts "3 defective equipment items created"
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
       inv_nr: rand(10000...100000),
-      category_id: rand(1...6)
+      category_id: rand(1...7)
   )
 end
 puts "3 under repair equipment items created"
@@ -114,7 +114,7 @@ puts "3 under repair equipment items created"
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
       inv_nr: rand(10000...100000),
-      category_id: rand(1...6)
+      category_id: rand(1...7)
   )
 end
 puts "10 available equipment items created"

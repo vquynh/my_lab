@@ -10,27 +10,33 @@ class EquipmentController < ApplicationController
 
   def el
     @labor_items = Equipment.el
+    @booking_item = current_booking.booking_items.new
     @page_title = "MyLab Electronic Equipment"
   end
 
   def measure
     @labor_items = Equipment.measure
+    @booking_item = current_booking.booking_items.new
   end
 
   def misc
     @labor_items = Equipment.misc
+    @booking_item = current_booking.booking_items.new
   end
 
   def computer
     @labor_items = Equipment.computer
+    @booking_item = current_booking.booking_items.new
   end
 
   def audio
     @labor_items = Equipment.audio
+    @booking_item = current_booking.booking_items.new
   end
 
   def video
     @labor_items = Equipment.video
+    @booking_item = current_booking.booking_items.new
   end
 
   def new

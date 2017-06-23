@@ -9,8 +9,9 @@
 <% end %>
 <% if @booking_items.size == 0 %>
   <p class="text-center">
-    There are no items in your equipment list.  Please <%= link_to "go back", root_path %> and add some items to your list.
+    There are no items in your equipment list.  Please go to equipment menu and add some items to your list.
   </p>
+  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-info" %>
 <% else %>
   <% @booking_items.each do |booking_item| %>
     <%= render 'list/list_row', labor_item: booking_item.equipment, booking_item: booking_item %>

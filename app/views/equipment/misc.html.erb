@@ -33,16 +33,17 @@
           <a class="nav-link" href="/computer-equipment">Computer</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/misc-equipment">Miscellaneous <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="/misc-equipment">Miscellaneous 
+           <span class="sr-only">(current)</span></a>
         </li>
       </ul>
     </nav>
     <!-- End of side-bar -->
     <%= render "shared/application_nav" %>
-
-    <%= login_helper %>
     <%= yield %>
-    <button class="btn btn-secondary add-new"><%= link_to "Add New Equipment", new_equipment_path if logged_in?(:labor_staff) %></button>
+    <%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
+    <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
     <div class="row equipment-container">
       <% @labor_items.each do |labor_item| %>
         <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
