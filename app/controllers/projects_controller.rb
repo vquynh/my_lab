@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
 
   def index
-    @projects = Project.all
+    @projects = Project.where.not(id: 1)
   end
 
   def new
