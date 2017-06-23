@@ -48,16 +48,87 @@ end
 
 puts "10 projects created"
 
-10.times do |available_item|
+5.times do |et_item|
   Equipment.create!(
-      name: "Equipment #{available_item}",
-      description: "Cool equipment frommy laboratory that is available for borrowing.",
+      name: "Equipment #{et_item}",
+      description: "Measuring equipment from my laboratory that is available for borrowing.",
       equipment_status: av,
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
       inv_nr: rand(10000...100000),
-      category_id: rand(1...7)
+      category_id: 1
   )
 end
 puts "10 available equipment items created"
+
+
+9.times do |me_item|
+  Equipment.create!(
+      name: "Equipment #{me_item}",
+      description: "Electronic equipment from my laboratory that is available for borrowing.",
+      equipment_status: av,
+      quantity: 1,
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+      inv_nr: rand(10000...100000),
+      category_id: 2
+  )
+end
+puts "9 available equipment items created"
+
+8.times do |au_item|
+  Equipment.create!(
+      name: "Equipment #{au_item}",
+      description: "Audio equipment from my laboratory that is available for borrowing.",
+      equipment_status: av,
+      quantity: 1,
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+      inv_nr: rand(10000...100000),
+      category_id: 3
+  )
+end
+puts "8 available equipment items created"
+
+7.times do |vi_item|
+  Equipment.create!(
+      name: "Equipment #{vi_item}",
+      description: "Video equipment from my laboratory that is available for borrowing.",
+      equipment_status: av,
+      quantity: 1,
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+      inv_nr: rand(10000...100000),
+      category_id: 4
+  )
+end
+puts "8 video equipment items created"
+
+6.times do |pc_item|
+  Equipment.create!(
+      name: "Equipment #{pc_item}",
+      description: "Computer and software equipment from my laboratory that is available for borrowing.",
+      equipment_status: av,
+      quantity: 1,
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+      inv_nr: rand(10000...100000),
+      category_id: 5
+  )
+end
+puts "6 video equipment items created"
+
+5.times do |m_item|
+  Equipment.create!(
+      name: "Equipment #{m_item}",
+      description: "Cool equipment from my laboratory that is available for borrowing.",
+      equipment_status: av,
+      quantity: 1,
+      main_image: "http://via.placeholder.com/600x400",
+      thumb_image: "http://via.placeholder.com/300x200",
+      inv_nr: rand(10000...100000),
+      category_id: 6
+  )
+end
+puts "6 video equipment items created"
