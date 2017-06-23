@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
   
   def index
     @bookings = current_user.bookings
+    @users = User.joins(:bookings).distinct
   end
 
   def new
@@ -35,7 +36,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to bookings_path, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to booking_path, notice: 'Booking was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -44,6 +45,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @booking_items = current_booking.booking_items
   end
 
   def destroy
@@ -51,6 +53,8 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
 
     # Destroy/Delete the record
+    @booking_items = current_booking.booking_items
+    @booking_items.destroy
     @booking.destroy
 
     # Redirect
@@ -70,5 +74,8 @@ private
                                     )
 
   end
-
+private
+  def users
+    User.joins(:bookings)
+  end
 end

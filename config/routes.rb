@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'booking_items/destroy'
 
-  get 'list/show'
+  get 'mylist', to: 'list#show'
 
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
 
