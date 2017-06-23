@@ -8,8 +8,14 @@
   - rails version 5.1.1
 
 * Configuration
+  - install ruby 
+  - install bundler
+  - install rails
+  - install postgres for database management
 
 * Database creation
+  - see <a href="https://www.postgresql.org/docs/9.6/static/tutorial-install.html"> PostgreSQL Tutorial </a> for more details.
+  - run ``` rails db:create:all ```
 
 * Database initialization
 
