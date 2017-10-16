@@ -11,15 +11,17 @@
   - install ruby 
   - install bundler
   - install rails
-  - install postgres for database management
+  - install postgreSQL for database management
+  - for more detailed instruction, follow this https://gorails.com/setup/osx/10.12-sierra 
+  (choose your os system: mac os, ubuntu or windows)
 
 * Database creation
-  - see <a href="https://www.postgresql.org/docs/9.6/static/tutorial-install.html"> PostgreSQL Tutorial </a> for more details.
   - run ``` rails db:create:all ```
-
-* Database initialization
+  - see <a href="https://www.postgresql.org/docs/9.6/static/tutorial-install.html"> PostgreSQL Tutorial </a> for more details.
 
 * Deployment instructions
+  - run ``` rails s ``` and application can be accessed with browser in the URL:
+   http://localhost:3000/ or http://127.0.0.1:3000/
 
 ### Code Example
 
