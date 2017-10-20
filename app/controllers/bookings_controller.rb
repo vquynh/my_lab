@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 
 
   def indexadmin
-    @bookings = Booking.all
+    @bookings = Booking.by_position
   end
   
   def index

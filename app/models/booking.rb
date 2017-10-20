@@ -12,5 +12,8 @@ private
   def set_user
     self.user_id = current_user_id
   end
+  def self.by_position
+    order("position ASC")
+  end
 
 end
