@@ -1,6 +1,22 @@
-<h3 class="listtext">All Bookings</h3>
-<%= render @bookings %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'bookings', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval':'false'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<%= link_to "Add New Booking", new_booking_path, class: "btn btn-success" if logged_in?(:labor_staff)  %>
+  <body>
+    <h3 class="listtext">All Bookings</h3>
+    <%= render @bookings %>
+    <%= link_to "Add New Booking", new_booking_path, class: "btn btn-success" if logged_in?(:labor_staff)  %>
+
+  </body>
+
+</html>
+
 
 
