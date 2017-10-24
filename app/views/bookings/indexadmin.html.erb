@@ -5,14 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'bookings', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval':'false'%>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bookings', media: 'all', 'data-turbolinks-track' => 'reload', 'data-turbolinks-eval' =>'false'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
   </head>
 
   <body>
-    <h3 class="listtext">All Bookings</h3>
-    <%= render @bookings %>
-    <%= link_to "Add New Booking", new_booking_path, class: "btn btn-success" if logged_in?(:labor_staff)  %>
+    <section id="main-content">
+      <section class="wrapper">
+        <h3>All Bookings</h3>
+          <div class="row mt mb">
+            <div class="col-md-12">
+              <section class="task-panel tasks-widget">
+  <!--              <div class="panel-heading">
+                  <div class="pull-left"><h5><i class="fa fa-tasks"></i> All Bookings</h5></div>
+                  <br>
+                </div>-->
+                <div class="panel-body">
+                  <div class="task-content">
+                    <ul id='sortable' class="sortable task-list">
+                      <%= render @bookings %>
+
+                    </ul>
+                  </div>
+                  <div class=" add-task-row">
+                    <%= link_to "Add New Booking", new_booking_path, class: "btn btn-success btn-sm pull-left" if logged_in?(:labor_staff)  %>
+                    <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+                  </div>
+                </div>
+              </section>
+            </div><!--/col-md-12 -->
+          </div><!-- /row -->
+      </section><! --/wrapper -->
+    </section><!-- /MAIN CONTENT -->
 
   </body>
 

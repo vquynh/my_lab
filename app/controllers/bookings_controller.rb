@@ -1,9 +1,19 @@
 class BookingsController < ApplicationController
   access user: {except: [:destroy, :new, :create, :indexadmin]}, labor_staff: :all
+  skip_before_action :verify_authenticity_token, :only => [:sort]
+
 
 
   def indexadmin
     @bookings = Booking.by_position
+  end
+
+  def sort
+    params[:order].each do |key, value|
+      Booking.find(value[:id]).update(position: value[:position])
+    end
+
+    render body: nil
   end
   
   def index

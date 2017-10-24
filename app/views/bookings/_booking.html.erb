@@ -1,23 +1,14 @@
-<div class="panel panel-default">
-  <div class="row panel-body">
-    <div class="col-md-6">
-      <div class="item-img" >
-        <%=  link_to booking.uuid, booking_path(booking) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= booking.booking_status.name %>
-      </div>
-      <br>
-    </div>
-    <div class="col-md-6">
-      <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-          <div class="btn-group">
-            <%= link_to "Remove", booking_path(booking), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to "Edit", edit_booking_path(booking), class: "btn btn-info" %>
-          </div>
-        </div>
-      </div>
+<li class="list-primary" data-id="<%= booking.id %>">
+  <div class="task-checkbox">
+    <input type="checkbox" class="list-child" value=""  />
+  </div>
+  <div class="task-title">
+    <span class="task-title-sp"> <%=  link_to booking.uuid, booking_path(booking) %> </span>
+    <span class="badge bg-theme"><%= booking.booking_status.name %></span>
+    <div class="pull-right hidden-phone">
+      <%= link_to "Remove", booking_path(booking), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Process", booking_path(booking), class: "btn btn-success btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Details", edit_booking_path(booking), class: "btn btn-info btn-xs fa fa-pencil" %>
     </div>
   </div>
-</div>
-
+</li>

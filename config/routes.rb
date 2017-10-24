@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :bookings do
       get 'indexadmin', on: :collection
+      put 'sort', on: :collection
   end
 
   get 'projects/:id', to: 'projects#show', as: 'project_show'
