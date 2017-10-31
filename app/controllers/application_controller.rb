@@ -7,14 +7,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_booking
 
   def current_booking
-    if !session[:booking_id].nil?
-      Booking.find(session[:booking_id])
-    else
+    if session[:booking_id].nil? || !Booking.exists?(session[:booking_id])
       booking = Booking.new
       booking.user_id = current_user.id
       booking.booking_status_id = 1
       booking.project_id = 1
       booking
+
+    else
+      Booking.find(session[:booking_id])
     end
   end
 
