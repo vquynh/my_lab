@@ -22,7 +22,7 @@
                 </div>-->
                 <div class="panel-body">
                   <div class="task-content">
-                    <ul id='sortable' class="sortable task-list">
+                    <ul id='sortable' class="task-list <%= "sortable" if logged_in?(:labor_staff) %> ">
                       <%= render @bookings %>
 
                     </ul>
