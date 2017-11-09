@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if logged_in?(:labor_staff) %>
+      <%= render "shared/admin_application_nav"%>
+    <% else%>
+      <%= render "shared/application_nav"%>
+    <% end %>
+    <%= yield %>
+    <% if session[:source] %>
+      <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
+    <% end %>
+  </body>
+</html>

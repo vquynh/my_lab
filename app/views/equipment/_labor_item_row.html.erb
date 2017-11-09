@@ -1,0 +1,21 @@
+<div class="well">
+
+  <div class="row">
+    <div class="col-md-6">
+        <h4><%= labor_item.name %></small></h4>
+    </div>
+    <div class="col-md-6">
+
+      <%= form_for booking_item, remote: true do |f| %>
+        <div class="input-group">
+          <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+          <div class="input-group-btn">
+            <%= f.hidden_field :labor_item_id, value: labor_item.id %>
+            <%= f.submit "Add to List", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

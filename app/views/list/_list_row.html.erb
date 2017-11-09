@@ -1,0 +1,35 @@
+<div class="well">
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div>
+          <%= image_tag labor_item.thumb_image, size: "210x140", class: "item-img" %>
+        </div>
+        <div class="item-img" >
+          <%= labor_item.name %>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-6">
+      <%= form_with(model: @booking_item) do |f| %>
+        <div class="row">
+          <div class="col-md-3">
+            <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1 %>
+            <%= f.hidden_field :equipment_id, value: labor_item.id %>
+          </div>
+          <div class="col-md-3">
+            <div class="btn-group">
+              <%= f.submit "Update Quantity", class: "btn btn-primary" %>
+              <%= link_to "Remove", booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
+              <%= link_to "To Booking", edit_booking_path(current_booking), class: "btn btn-success" %>
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div

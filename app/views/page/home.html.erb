@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'page', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  </body>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">My Lab</h1>
+        <p class="lead text-muted">My favorite laboratory where I can find the equipments I need for my projects.</p>
+      </div>
+    </section>
+
+    <div class="album text-muted">
+      <div class="container">
+        <p>Hi, <%= current_user.first_name %> <p>
+        <h3 class="headline">New Equipment</h3>
+        <div class="row">
+          <% @new_items.each do |new_item| %>
+            <div class="home-card">
+              <%= image_tag new_item.thumb_image unless new_item.thumb_image.nil? %>
+              <p class="home-card-text"><%= link_to new_item.name, equipment_path(new_item)  %></p>
+              <p class="home-card-text"><%= new_item.description %></p>
+            </div>
+          <% end %> 
+        </div>
+        <h3 class="headline">New Projects</h3>
+        <div class="row">
+          <% @new_projects.each do |new_project| %>
+            <div class="home-card">
+              <%= image_tag new_project.thumb_image unless new_project.thumb_image.nil? %>
+              <p class="home-card-text link-text"><%= link_to new_project.name, project_path(new_project) %></p>
+              <p class="home-card-text"><%= new_project.description %></p>
+            </div>
+          <% end %> 
+        </div>
+        <h3 class="headline">Recently Booked</h3>
+        <div class="row">
+          <% @fav_items.each do |fav_item| %>
+            <div class="home-card">
+              <%= image_tag fav_item.thumb_image unless fav_item.thumb_image.nil? %>
+              <p class="home-card-text"><%= link_to fav_item.name, equipment_path(fav_item)  %></p>
+              <p class="home-card-text"><%= fav_item.description %></p>
+            </div>
+          <% end %> 
+        </div>
+        <!--<%= @count %>--> //To-do: implement most favorite items
+      </div>
+    </div>
+  </body>
+<html>

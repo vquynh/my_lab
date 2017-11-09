@@ -1,0 +1,10 @@
+<h3 class="listtext">Show Project Details</h3>
+<%= image_tag @project.main_image %>
+
+<h1><%= @project.name %></h1>
+<p><%= @project.description %></p>
+
+<%= link_to 'Edit', edit_project_path(@project), class: "btn btn-secondary" if logged_in?(:labor_staff) %>
+<%= link_to 'Back', projects_path, class: "btn btn-info" %>
+
+

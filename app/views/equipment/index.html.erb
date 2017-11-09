@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'equipment', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+        <!-- Start of side-bar -->
+    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="/equipment">All Equipment <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/measuring-equipment">Measuring</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/electric-equipment">Electronics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/audio-equipment">Audio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/video-equipment">Video</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/computer-equipment">Computer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/misc-equipment">Miscellaneous</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- End of side-bar -->
+    <%= render "shared/application_nav" %>
+    <%= yield %>
+    <%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
+    <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
+    <div class="row equipment-container">
+      <% @labor_items.each do |labor_item| %>
+        <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
+      <% end %>
+    </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if session[:source] %>
+      <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
+    <% end %>
+  </body>
+</html>
