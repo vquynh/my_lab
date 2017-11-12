@@ -16,4 +16,7 @@
   <% @booking_items.each do |booking_item| %>
     <%= render 'list/list_row', labor_item: booking_item.equipment, booking_item: booking_item %>
   <% end %>
+  <div class="btn-group">
+    <%= link_to "To Booking", booklist_path, class: "btn btn-success" %>
+  </div>
 <% end %>

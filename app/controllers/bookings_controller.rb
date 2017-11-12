@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    session[:booking_id] = @booking.id
   end
 
   def create
