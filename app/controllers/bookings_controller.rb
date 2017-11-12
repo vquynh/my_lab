@@ -30,6 +30,8 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @booking_items = @booking.booking_items
+    @labor_item = Equipment.joins(:booking_items)
   end
 
   def update
@@ -61,7 +63,7 @@ class BookingsController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to booking_url, notice: 'Booking was removed.' }
+      format.html { redirect_to booking_path, notice: 'Booking was removed.' }
     end
   end
 
