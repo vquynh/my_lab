@@ -17,5 +17,4 @@ class ApplicationController < ActionController::Base
       booking
     end
   end
-
 end

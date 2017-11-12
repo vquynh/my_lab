@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   get 'booking_items/create'
 
-  get 'booking_items/update'
+  post 'booking_items/update'
 
   get 'booking_items/destroy'
 
   get 'mylist', to: 'list#show'
+
+  get 'booklist', to: 'list#add_list_to_booking'
 
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
 
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :equipment, except: [:show]
 
-  resource :list, only: [:show]
+  resource :list, except: [:show]
 
   resources :booking_items, only: [:create, :update, :destroy]
 
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   get 'about', to: 'page#about'
 
   get 'contact', to: 'page#contact'
+
 
   root to: 'page#home'
 
