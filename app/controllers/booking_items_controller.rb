@@ -12,11 +12,17 @@ class BookingItemsController < ApplicationController
   end
 
   def update
+    @list = current_booking
     @booking_item = BookingItem.find(params[:id])
+    @booking = Booking.find(@booking_item.booking_id)
 
     respond_to do |format|
       if @booking_item.update(booking_item_params)
-        format.html { redirect_to booking_path, notice: 'Item  was successfully updated.' }
+        if @booking.id == @list.id
+          format.html { redirect_to mylist_path, notice: 'Item was removed.' }
+        else
+          format.html { redirect_to edit_booking_path(@booking), notice: 'Item was removed.' }
+        end
       else
         format.html { render :edit }
       end

@@ -13,7 +13,7 @@
       <br>
     </div>
     <div class="col-md-6">
-      <%= form_with(model: @booking_item) do |f| %>
+      <%= form_for booking_item do |f| %>
         <div class="row">
           <div class="col-md-3">
             <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1 %>
