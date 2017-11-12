@@ -6,6 +6,12 @@ class BookingsController < ApplicationController
 
   def indexadmin
     @bookings = Booking.by_position
+    @bookings_pending = Booking.pending
+    @bookings_confirmed = Booking.confirmed
+    @bookings_claimed = Booking.claimed
+    @bookings_unclaimed = Booking.unclaimed
+    @bookings_overdue = Booking.overdue
+    @bookings_returned = Booking.returned
   end
 
   def sort
