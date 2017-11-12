@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
   include CurrentUserConcern
   include DefaultPageContent
   helper_method :current_booking
-  helper_method :new_booking
-  helper_method :delete_current_booking_in_session_and_create_new
 
   def current_booking
     if !session[:booking_id].nil?
