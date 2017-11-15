@@ -4,6 +4,9 @@
     <div class="card-block">
         <h3 class="card-title">Edit Booking Details </h3>
         <%= render "form", booking: @booking %>
+        <% @booking_items.each do |booking_item| %>
+            <%= render 'list/list_row', booking_item: booking_item, labor_item: booking_item.equipment %>
+        <% end %>
     </div>
   </div>
 </div> 
