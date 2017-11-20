@@ -4,8 +4,26 @@
 <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
 <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
 <div class="row equipment-container">
-  <% @labor_items.each do |labor_item| %>
-      <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
+  <%= form_with(model: @booking) do |form| %>
+      <div class="input-group">
+        <div class="form-group pr">
+          <%= form.label :pickup_date %>
+          <%= form.date_select :pickup_date, class: "form-control"  %>
+        </div>
+        <div class="form-group pr">
+          <%= form.label :return_date %>
+          <%= form.date_select :return_date, class: "form-control"  %>
+        </div>
+        <div class="form-group pr">
+          <%= button_to "Search", url_for(params), class: "btn btn-info" %>
+        </div>
+      </div>
+  <% end %>
+</div>
+
+<div class="row equipment-container">
+  <% @available_items.each do |labor_item| %>
+      <%= render partial: 'labor_item', collection: @available_items, booking_item: @booking_item %>
   <% end %>
 </div>
 <p class="notice"><%= notice %></p>
