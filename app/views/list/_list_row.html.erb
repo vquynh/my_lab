@@ -13,7 +13,7 @@
       <br>
     </div>
     <div class="col-md-6">
-      <%= form_with(model: @booking_item) do |f| %>
+      <%= form_for booking_item do |f| %>
         <div class="row">
           <div class="col-md-3">
             <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1 %>
@@ -21,10 +21,8 @@
           </div>
           <div class="col-md-3">
             <div class="btn-group">
-              <%= f.submit "Update Quantity", class: "btn btn-primary" %>
-              <%= link_to "Remove", booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
-              <%= link_to "To Booking", edit_booking_path(current_booking), class: "btn btn-success" %>
-
+              <%= f.submit "Update Quantity" , class: "btn btn-primary" %>
+              <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
             </div>
           </div>
         </div>
@@ -32,4 +30,4 @@
     </div>
   </div>
 
-</div
+</div>

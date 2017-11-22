@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    session[:booking_id] = @booking.id
   end
 
   def create
@@ -29,6 +30,8 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @booking_items = @booking.booking_items
+    @labor_item = Equipment.joins(:booking_items)
   end
 
   def update
@@ -45,7 +48,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-    @booking_items = current_booking.booking_items
+    @booking_items = @booking.booking_items
     @labor_item = Equipment.joins(:booking_items)
   end
 
@@ -54,13 +57,13 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
 
     # Destroy/Delete the record
-    @booking_items = current_booking.booking_items
+    @booking_items = @booking.booking_items
     @booking_items.destroy
     @booking.destroy
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to booking_url, notice: 'Booking was removed.' }
+      format.html { redirect_to booking_path, notice: 'Booking was removed.' }
     end
   end
 

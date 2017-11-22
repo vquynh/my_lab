@@ -12,11 +12,12 @@ class ApplicationController < ActionController::Base
       booking.user_id = current_user.id
       booking.booking_status_id = 1
       booking.project_id = 1
+      booking.pickup_date = nil
+      booking.return_date = nil
       booking
 
     else
       Booking.find(session[:booking_id])
     end
   end
-
 end

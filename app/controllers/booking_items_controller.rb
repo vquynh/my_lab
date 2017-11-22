@@ -1,25 +1,52 @@
 class BookingItemsController < ApplicationController
   def create
     @booking = current_booking
-    @booking_item = @booking.booking_items.new(booking_item_params)
+    @booking_items = @booking.booking_items
+    same_item = @booking_items.find_by_equipment_id(params[:booking_item][:labor_item_id])
+    if same_item.nil?
+      @booking_item = @booking.booking_items.new(booking_item_params)
+    else
+      same_item.quantity = same_item.quantity + params[:booking_item][:quantity].to_i
+      same_item.save!
+    end
     @booking.save!
     session[:booking_id] = @booking.id
   end
 
+
+  def edit
+    @booking_item = BookingItem.find(params[:id])
+  end
+
   def update
-    @booking = current_booking
-    @booking_item = @booking.booking_items.find(params[:id])
-    @booking_item.update_attributes(booking_item_params)
-    @booking_items = @booking.booking_items
+    @list = current_booking
+    @booking_item = BookingItem.find(params[:id])
+    @booking = Booking.find(@booking_item.booking_id)
+
+    respond_to do |format|
+      if @booking_item.update(booking_item_params)
+        if @booking.id == @list.id
+          format.html { redirect_to mylist_path, notice: 'Item was removed.' }
+        else
+          format.html { redirect_to edit_booking_path(@booking), notice: 'Item was removed.' }
+        end
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
-    @booking = current_booking
-    @booking_item = @booking.booking_items.find(params[:id])
+    @list = current_booking
+    @booking_item = BookingItem.find(params[:id])
+    @booking = Booking.find(@booking_item.booking_id)
     @booking_item.destroy
-    @booking_items = @booking.booking_items
     respond_to do |format|
-      format.html { redirect_to mylist_path, notice: 'Item was removed.' }
+      if @booking.id == @list.id
+        format.html { redirect_to mylist_path, notice: 'Item was removed.' }
+      else
+        format.html { redirect_to edit_booking_path(@booking), notice: 'Item was removed.' }
+      end
     end
   end
 

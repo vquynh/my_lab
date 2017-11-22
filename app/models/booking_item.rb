@@ -7,18 +7,13 @@ class BookingItem < ApplicationRecord
   validate :booking_present
   alias_attribute :labor_item_id, :equipment_id
 
-private
-    def equipment_present
-      if equipment.nil?
-        errors.add(:equipment, "is not valid or is not active.")
-      end
-    end
+  private
 
-    def booking_present
-      if booking.nil?
-        errors.add(:booking, "is not a valid order.")
-      end
-    end
+  def equipment_present
+    errors.add(:equipment, 'is not valid or is not active.') if equipment.nil?
+  end
 
-
+  def booking_present
+    errors.add(:booking, 'is not a valid order.') if booking.nil?
+  end
 end
