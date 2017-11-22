@@ -1,6 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -85,5 +84,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_cable.allowed_request_origins = ['https://rdb-my-lab.herokuapp.com', 'http://rdb-my-lab..herokuapp.com']
-  config.action_cable.url = "wss://rdb-my-lab..herokuapp.com/cable"
+  config.action_cable.url = "wss://rdb-my-lab.herokuapp.com/cable"
 end
