@@ -59,3 +59,4 @@ end
 
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 
+ruby '2.4.2'
