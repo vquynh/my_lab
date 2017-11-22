@@ -28,3 +28,5 @@
 
 # ignore mac stuff
 app/assets/.DS_Store
+config/database.yml
+config/secrets.yml
