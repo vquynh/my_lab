@@ -1,7 +1,14 @@
 class BookingItemsController < ApplicationController
   def create
     @booking = current_booking
-    @booking_item = @booking.booking_items.new(booking_item_params)
+    @booking_items = @booking.booking_items
+    same_item = @booking_items.find_by_equipment_id(params[:booking_item][:labor_item_id])
+    if same_item.nil?
+      @booking_item = @booking.booking_items.new(booking_item_params)
+    else
+      same_item.quantity = same_item.quantity + params[:booking_item][:quantity].to_i
+      same_item.save!
+    end
     @booking.save!
     session[:booking_id] = @booking.id
   end
