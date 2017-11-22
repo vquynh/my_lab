@@ -61,4 +61,6 @@ group :development do
   gem 'petergate', '~> 1.7', '>= 1.7.5'
 end
 
+ruby "2.4.2"
+
 
