@@ -58,7 +58,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'petergate', '~> 1.7', '>= 1.7.5'
 end
 
+gem 'petergate', '~> 1.7', '>= 1.7.5'
 
