@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170621095634) do
 
   create_table "equipment", force: :cascade do |t|
     t.string "name"
-    t.integer "inv_nr"
+    t.string "inv_nr"
     t.text "description"
     t.integer "quantity", default: 1
     t.text "thumb_image"
