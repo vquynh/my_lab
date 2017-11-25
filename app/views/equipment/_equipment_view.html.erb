@@ -22,9 +22,7 @@
 </div>
 
 <div class="row equipment-container">
-  <% @available_items.each do |labor_item| %>
-      <%= render partial: 'labor_item', locals: { ad: ad }, booking_item: @booking_item %>
-  <% end %>
+  <%= render partial: 'labor_item', collection: @available_items, booking_item: @booking_item %>
 </div>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
