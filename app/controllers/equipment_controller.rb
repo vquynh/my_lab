@@ -23,8 +23,8 @@ class EquipmentController < ApplicationController
         end
 
         booked_items.each do |booking_item|
-          booked_labor_item += Equipment.find(booking_item.equipment_id)
-          @available_items -= Equipment.find(booked_labor_item.id)
+          booked_labor_item = Equipment.find(booking_item.equipment_id)
+          @available_items = Equipment.where.not(id: booked_labor_item.id)
           @available_items
         end
       end
