@@ -1,7 +1,7 @@
 
 <div class="home-card">
   <%= image_tag labor_item.thumb_image unless labor_item.thumb_image.nil? %>
-  <p class="home-card-text"><%= link_to (labor_item.name + " - " + labor_item.inv_nr), equipment_show_path(labor_item)  %></p>
+  <p class="home-card-text"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></p>
   <p class="home-card-text"><%= labor_item.description %></p>
   <% if logged_in?(:labor_staff) %> 
     <button class="btn btn-default"><%= link_to "Edit", edit_equipment_path(labor_item) %></button>
