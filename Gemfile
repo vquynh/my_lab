@@ -18,6 +18,7 @@ gem 'devise', '~> 4.2'
 gem 'sass-rails', '~> 5.0'
 #Use bootstrap
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'bootstrap-datepicker-rails' # For showing calender in date fields insane
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
