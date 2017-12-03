@@ -3,7 +3,7 @@ class EquipmentController < ApplicationController
   access all: [:show, :index, :el, :measure, :misc, :computer, :audio, :video], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
 
   def index
-    @available_items = Equipment.all
+    @available_items = Equipment.search(params[:search])
     available_item
     @page_title = "MyLab Equipment"
   end

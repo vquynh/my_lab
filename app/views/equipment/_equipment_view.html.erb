@@ -4,7 +4,7 @@
 <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
 <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
 <div class="row equipment-container">
-  <%= form_with(model: @booking) do |form| %>
+  <%= form_for @booking, remote: true do |form| %>
       <div class="row">
         <div class="form-group col-md-2">
           <%= form.label :pickup_date %>
@@ -18,8 +18,10 @@
         <div class="form-group col-md-3">
           <%= form.text_field :return_date, class: "form-control", :data => {:provide => "datepicker"} %>
         </div>
-        <div class="form-group col-md-2">
-          <%= button_to "Search", "", class: "btn btn-info" %>
+        <div class="form-group input-group-btn col-md-2">
+          <%= form.hidden_field :project_id, value: 1 %>
+          <%= form.hidden_field :booking_status_id, value: 1 %>
+          <%= form.submit "Search",  class: "btn btn-info" %>
         </div>
       </div>
   <% end %>

@@ -28,4 +28,11 @@ class Equipment < ApplicationRecord
     where(category_id: 6)
   end
 
+  def self.search(search)
+    if search
+      where('name LIKE ? OR inv_nr LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      all
+    end
+  end
 end

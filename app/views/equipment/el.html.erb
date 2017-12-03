@@ -36,6 +36,11 @@
           <a class="nav-link" href="/misc-equipment">Miscellaneous</a>
         </li>
       </ul>
+      <%= form_tag equipment_index_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2' %>
+          <%= submit_tag 'Search by name', :name => nil , class: 'form-control btn btn-info' %>
+      <% end %>
+
     </nav>
     <!-- End of side-bar -->
         <%= render 'equipment_view' %>
