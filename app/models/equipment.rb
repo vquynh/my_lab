@@ -30,7 +30,7 @@ class Equipment < ApplicationRecord
 
   def self.search(search)
     if search
-      where('name LIKE ? OR inv_nr LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+      where('name ILIKE ? OR inv_nr ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
     else
       all
     end
