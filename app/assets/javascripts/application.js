@@ -18,5 +18,8 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 
+//= require moment
+//= require fullcalendar
 
+$('#calendar').fullCalendar({});
 

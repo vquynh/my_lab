@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to equipment_index_path, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to booking_path, notice: 'Booking was successfully updated.' }
       else
         format.html { render :edit }
       end

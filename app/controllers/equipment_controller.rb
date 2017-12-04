@@ -12,9 +12,8 @@ class EquipmentController < ApplicationController
   end
 
   def el
-    @available_items = Equipment.search(params[:search])
+    @available_items = Equipment.el.search(params[:search])
                            .filter_availability(params[:pickup_date], params[:return_date])
-                           .where(category_id: 2)
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @page_title = "MyLab Electronic Equipment"

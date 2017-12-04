@@ -3,19 +3,6 @@
 <%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
 <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
 <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
-<div class="row equipment-container">
-  <%= form_tag equipment_index_path, :method => 'get' do %>
-      <div class="row">
-        <%= label_tag 'pickup_date', 'From:' , class: 'col-md-1 inline-field' %>
-        <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control col-md-3 inline-field', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
-        <%= label_tag 'return_date', 'To:' , class: 'col-md-1' %>
-        <%= text_field_tag :return_date, params[:return_date], class: 'form-control col-md-3 inline-field', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
-        <%= submit_tag 'Filter by date', :name => nil , class: 'col-md-3 btn btn-info inline-field' %>
-      </div>
-  <% end %>
-
-
-</div>
 
 <div class="row equipment-container">
   <%= render partial: 'labor_item', collection: @available_items, booking_item: @booking_item %>

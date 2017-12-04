@@ -16,6 +16,9 @@ gem 'puma', '~> 3.7'
 gem 'devise', '~> 4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Full calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 #Use bootstrap
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'bootstrap-datepicker-rails' # For showing calender in date fields insane
