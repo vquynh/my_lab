@@ -35,4 +35,18 @@ class Equipment < ApplicationRecord
       all
     end
   end
+
+  # @param [Object] return_date
+  # @param [Object] pickup_date
+  def self.filter_availability(pickup_date, return_date)
+    if pickup_date && return_date
+      equipment_ids = Booking.joins(:booking_items)
+                          .select('equipment_id')
+      .where('(pickup_date, return_date) OVERLAPS (?,?)',
+                                 "%#{pickup_date}%", "%#{return_date}%")
+      Equipment.where('id NOT IN (?)', equipment_ids)
+    else
+      all
+    end
+  end
 end

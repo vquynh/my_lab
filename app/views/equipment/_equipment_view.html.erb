@@ -4,27 +4,16 @@
 <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
 <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
 <div class="row equipment-container">
-  <%= form_for @booking, remote: true do |form| %>
+  <%= form_tag equipment_index_path, :method => 'get' do %>
       <div class="row">
-        <div class="form-group col-md-2">
-          <%= form.label :pickup_date %>
-        </div>
-        <div class="form-group col-md-3">
-          <%= form.text_field :pickup_date, class: "form-control", :data => {:provide => "datepicker"} %>
-        </div>
-        <div class="form-group col-md-2">
-          <%= form.label :return_date %>
-        </div>
-        <div class="form-group col-md-3">
-          <%= form.text_field :return_date, class: "form-control", :data => {:provide => "datepicker"} %>
-        </div>
-        <div class="form-group input-group-btn col-md-2">
-          <%= form.hidden_field :project_id, value: 1 %>
-          <%= form.hidden_field :booking_status_id, value: 1 %>
-          <%= form.submit "Search",  class: "btn btn-info" %>
-        </div>
+        <%= label_tag 'pickup_date', 'From:' , class: 'col-md-1 inline-field' %>
+        <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control col-md-3 inline-field', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
+        <%= label_tag 'return_date', 'To:' , class: 'col-md-1' %>
+        <%= text_field_tag :return_date, params[:return_date], class: 'form-control col-md-3 inline-field', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
+        <%= submit_tag 'Filter by date', :name => nil , class: 'col-md-3 btn btn-info inline-field' %>
       </div>
   <% end %>
+
 
 </div>
 
