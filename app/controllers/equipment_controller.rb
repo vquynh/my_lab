@@ -116,7 +116,9 @@ private
                                       :description, 
                                       :quantity, 
                                       :category_id, 
-                                      :equipment_status_id
+                                      :equipment_status_id,
+                                      :main_image,
+                                      :thumb_image
                                       )
 
   end
