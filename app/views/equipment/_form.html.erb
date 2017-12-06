@@ -1,7 +1,8 @@
-<div class="card">
-  <div class="card-block">
-    <h1 class="card-title"> Edit equipment details </h1>
-      <%= form_for(@labor_item) do |f| %>
+<%= form_for(@labor_item) do |f| %>
+
+    <div class="card">
+    <div class="card-block">
+      <h1 class="card-title"> Edit equipment details </h1>
         <div class="row inline-field ac">
           <div class="form-group col-md-6">
             <%= f.label :name %><br />
@@ -50,8 +51,9 @@
         </div>
 
         <div class="actions">
-          <%= f.submit 'Update Equipment', class: 'btn btn-primary' %>
+          <%= f.submit %>
         </div>
-      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
