@@ -18,6 +18,12 @@ body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */
 }
 
+.card {
+  width: 48rem;
+  margin: 0 auto;
+  float: none;
+}
+
 .inline-field {
   margin-right: 5px;
   margin-left: 2px;
