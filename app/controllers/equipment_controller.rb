@@ -1,41 +1,61 @@
 class EquipmentController < ApplicationController
   layout "equipment"
-  access all: [:show, :index, :el, :measure, :misc, :computer, :audio, :video], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+  access all: [:show, :index, :el, :measure, :misc, :computer, :audio, :video],
+         user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
 
   def index
-    @labor_items = Equipment.all
-    @booking_item = current_booking.booking_items.new
+    @available_items = Equipment.search(params[:search])
+                                .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
     @page_title = "MyLab Equipment"
   end
 
   def el
-    @labor_items = Equipment.el
-    @booking_item = current_booking.booking_items.new
+    @available_items = Equipment.el.search(params[:search])
+                           .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
     @page_title = "MyLab Electronic Equipment"
   end
 
   def measure
-    @labor_items = Equipment.measure
-    @booking_item = current_booking.booking_items.new
+    @available_items = Equipment.measure.search(params[:search])
+                           .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
+    @page_title = "MyLab Messuring Equipment"
   end
 
   def misc
-    @labor_items = Equipment.misc
+    @available_items = Equipment.misc.search(params[:search])
+                           .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
   def computer
-    @labor_items = Equipment.computer
+    @available_items = Equipment.computer.search(params[:search])
+                           .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
   def audio
-    @labor_items = Equipment.audio
+    @available_items = Equipment.audio.search(params[:search])
+                           .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
   def video
-    @labor_items = Equipment.video
+    @available_items = Equipment.video.search(params[:search])
+                           .filter_availability(params[:pickup_date], params[:return_date])
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
@@ -96,7 +116,9 @@ private
                                       :description, 
                                       :quantity, 
                                       :category_id, 
-                                      :equipment_status_id
+                                      :equipment_status_id,
+                                      :main_image,
+                                      :thumb_image
                                       )
 
   end

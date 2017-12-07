@@ -3,7 +3,7 @@
 
 <%= image_tag @labor_item.main_image %>
 
-<h1><%= @labor_item.name %></h1>
+<h1><%= @labor_item.name + " - " +(@labor_item.inv_nr).to_s %></h1>
 <p><%= @labor_item.equipment_status.name %></p>
 <em><%= @labor_item.description %></em>
 

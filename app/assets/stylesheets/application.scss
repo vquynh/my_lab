@@ -10,12 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap-datepicker
+ *= require fullcalendar
  */
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
-/*
- *= require jquery-ui/datepicker
- */
 @import "bootstrap";
 
 a,
@@ -26,6 +25,11 @@ a:hover {
 
 body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */
+}
+
+
+.ac {
+  align: center;
 }
 
 .navbar {
@@ -127,6 +131,10 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 2rem;
+}
+/* margin */
+.ml {
+  margin-left: 2rem;
 }
 
 

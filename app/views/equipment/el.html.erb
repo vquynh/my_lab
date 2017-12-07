@@ -36,22 +36,23 @@
           <a class="nav-link" href="/misc-equipment">Miscellaneous</a>
         </li>
       </ul>
+      <%= form_tag electric_equipment_path, :method => 'get' do %>
+          <%= submit_tag 'Search by name', :name => nil , class: 'form-control btn btn-info' %>
+          <%= text_field_tag :search, params[:search], class: 'form-control mr-sm-2' %>
+      <% end %>
+      <br>
+
+      <%= form_tag electric_equipment_path, :method => 'get' do %>
+          <%= submit_tag 'Filter by date', :name => nil , class: 'form-control btn btn-info' %>
+          <%= label_tag 'pickup_date', 'From:' , class: 'mr-sm-2' %>
+          <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control mr-sm-2', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
+          <%= label_tag 'return_date', 'To:' , class: 'mr-sm-2' %>
+          <%= text_field_tag :return_date, params[:return_date], class: 'form-control mr-sm-2', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
+      <% end %>
+
     </nav>
     <!-- End of side-bar -->
-    <%= render "shared/application_nav" %>
-    <%= yield %>
-    <%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
-    <%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
-    <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
-    <div class="row equipment-container">
-      <% @labor_items.each do |labor_item| %>
-        <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
-      <% end %>
-    </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if session[:source] %>
-      <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
-    <% end %>
+        <%= render 'equipment_view' %>
+
   </body>
 </html>

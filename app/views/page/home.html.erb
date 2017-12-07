@@ -14,7 +14,7 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">My Lab</h1>
-        <p class="lead text-muted">My favorite laboratory where I can find the equipments I need for my projects.</p>
+        <p class="lead text-muted">A demo website for booking and managing laboratory equipment.</p>
       </div>
     </section>
 
@@ -43,15 +43,25 @@
         </div>
         <h3 class="headline">Recently Booked</h3>
         <div class="row">
+          <% @recently_booked_items.each do |recent_item| %>
+            <div class="home-card">
+              <%= image_tag recent_item.thumb_image unless recent_item.thumb_image.nil? %>
+              <p class="home-card-text"><%= link_to recent_item.name, equipment_path(recent_item)  %></p>
+              <p class="home-card-text"><%= recent_item.description %></p>
+            </div>
+          <% end %> 
+        </div>
+
+        <h3 class="headline">Most Favorite Equipment</h3>
+        <div class="row">
           <% @fav_items.each do |fav_item| %>
             <div class="home-card">
               <%= image_tag fav_item.thumb_image unless fav_item.thumb_image.nil? %>
               <p class="home-card-text"><%= link_to fav_item.name, equipment_path(fav_item)  %></p>
               <p class="home-card-text"><%= fav_item.description %></p>
             </div>
-          <% end %> 
+          <% end %>
         </div>
-        <!--<%= @count %>--> //To-do: implement most favorite items
       </div>
     </div>
   </body>

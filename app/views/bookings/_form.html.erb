@@ -18,11 +18,11 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= form.label :pickup_date %>
-        <%= form.date_select :pickup_date, class: "form-control"  %>
+        <%= form.text_field :pickup_date, class: "form-control", :data => {:provide => "datepicker"} %>
       </div>
       <div class="form-group">
         <%= form.label :return_date %>
-        <%= form.date_select :return_date, class: "form-control"  %>
+        <%= form.text_field :return_date, class: "form-control date-field", :data => {:provide => "datepicker"} %>
       </div>
     </div>
     <div class="col-md-10"></div>

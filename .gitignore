@@ -28,3 +28,9 @@
 config/initializers/devise.rb
 config/.DS_Store
 .DS_Store
+
+# ignore mac stuff
+app/assets/.DS_Store
+config/database.yml
+config/secrets.yml
+.DS_Store

@@ -41,6 +41,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    last_booked_items_ids = Booking.joins(:booking_items).select(:equipment_id).where("project_id = ?", params[:id])
+    @usually_booked_items = Equipment.where('id IN (?)', last_booked_items_ids).last(3)
   end
 
   def destroy
@@ -58,9 +60,10 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, 
-                                    :description
-                                    )
+    params.require(:project).permit(:name,
+                                    :description,
+                                    :main_image,
+                                    :thumb_image)
 
   end
 

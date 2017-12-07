@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  access user: {except: [:destroy, :new, :create, :indexadmin]}, labor_staff: :all
+  access user: {except: [:destroy, :indexadmin]}, labor_staff: :all
 
 
   def indexadmin
@@ -17,15 +17,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.build(booking_params)
-
-    respond_to do |format|
-      if @booking.save!
-        format.html { redirect_to bookings_path, notice: 'Booking was successfully submitted.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @booking = current_booking
   end
 
   def edit

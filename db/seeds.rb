@@ -11,7 +11,6 @@ Project.create(name: 'Choose Project')
 puts "created placeholder project"
 
 BookingStatus.create(name: 'Submitted')
-BookingStatus.create(name: 'Read')
 BookingStatus.create(name: 'Confirmed')
 BookingStatus.create(name: 'Unclaimed')
 BookingStatus.create(name: 'Claimed')
@@ -28,12 +27,12 @@ ur = EquipmentStatus.create! :name => "Under repair"
 
 puts "created equipment statuses"
 
-c1 = Category.create! :name => "Measuring Technology"
-c2 = Category.create! :name => "Electrical Engineering"
-c3 = Category.create! :name => "Audio Technology"
-c4 = Category.create! :name => "Video Technology"
-c5 = Category.create! :name => "Software & Computer"
-c6 = Category.create! :name => "Miscellaneous"
+Category.create! :name => "Measuring Technology"
+Category.create! :name => "Electrical Engineering"
+Category.create! :name => "Audio Technology"
+Category.create! :name => "Video Technology"
+Category.create! :name => "Software & Computer"
+Category.create! :name => "Miscellaneous"
 
 puts "created equipment categories"
 
@@ -56,7 +55,7 @@ puts "10 projects created"
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
+      inv_nr: rand(10000...100000).to_s,
       category_id: 1
   )
 end
@@ -71,7 +70,7 @@ puts "10 available equipment items created"
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
+      inv_nr: rand(10000...100000).to_s,
       category_id: 2
   )
 end
@@ -85,7 +84,7 @@ puts "9 available equipment items created"
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
+      inv_nr: rand(10000...100000).to_s,
       category_id: 3
   )
 end
@@ -99,7 +98,7 @@ puts "8 available equipment items created"
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
+      inv_nr: rand(10000...100000).to_s,
       category_id: 4
   )
 end
@@ -113,7 +112,7 @@ puts "8 video equipment items created"
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
+      inv_nr: rand(10000...100000).to_s,
       category_id: 5
   )
 end
@@ -127,7 +126,7 @@ puts "6 video equipment items created"
       quantity: 1,
       main_image: "http://via.placeholder.com/600x400",
       thumb_image: "http://via.placeholder.com/300x200",
-      inv_nr: rand(10000...100000),
+      inv_nr: rand(10000...100000).to_s,
       category_id: 6
   )
 end

@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.1'
+gem 'rails', '5.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -16,18 +16,19 @@ gem 'puma', '~> 3.7'
 gem 'devise', '~> 4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Full calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 #Use bootstrap
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'bootstrap-datepicker-rails' # For showing calender in date fields insane
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# For docker
-gem 'unicorn', '~> 5.3.0'
-gem 'sidekiq', '~> 5.0'
+
 gem 'redis-rails', '~> 5.0', '>= 5.0.2'
-gem 'raindrops', '~> 0.18.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -58,7 +59,16 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'petergate', '~> 1.7', '>= 1.7.5'
 end
 
+# production
+gem 'capistrano', '~> 3.7', '>= 3.7.1'
+gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-passenger', '~> 0.2.0'
 
+# Add this if you're using rbenv
+gem 'capistrano-rbenv', '~> 2.1'
+
+gem 'petergate', '~> 1.7', '>= 1.7.5'
+
+ruby '2.4.2'
