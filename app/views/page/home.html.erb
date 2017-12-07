@@ -1,16 +1,5 @@
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= @page_title %></title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'page', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  </body>
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">My Lab</h1>
@@ -29,7 +18,7 @@
               <p class="home-card-text"><%= link_to new_item.name, equipment_path(new_item)  %></p>
               <p class="home-card-text"><%= new_item.description %></p>
             </div>
-          <% end %> 
+          <% end %>
         </div>
         <h3 class="headline">New Projects</h3>
         <div class="row">
@@ -39,7 +28,7 @@
               <p class="home-card-text link-text"><%= link_to new_project.name, project_path(new_project) %></p>
               <p class="home-card-text"><%= new_project.description %></p>
             </div>
-          <% end %> 
+          <% end %>
         </div>
         <h3 class="headline">Recently Booked</h3>
         <div class="row">
@@ -49,7 +38,7 @@
               <p class="home-card-text"><%= link_to recent_item.name, equipment_path(recent_item)  %></p>
               <p class="home-card-text"><%= recent_item.description %></p>
             </div>
-          <% end %> 
+          <% end %>
         </div>
 
         <h3 class="headline">Most Favorite Equipment</h3>
