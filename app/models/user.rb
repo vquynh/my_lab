@@ -18,11 +18,11 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   def first_name
-    self.name.split.first
+    name.split.first
   end
   
   def last_name
-    self.name.split.last
+    name.split.last
   end
 
 end
