@@ -45,9 +45,9 @@
       <%= form_tag electric_equipment_path, :method => 'get' do %>
           <%= submit_tag 'Filter by date', :name => nil , class: 'form-control btn btn-info' %>
           <%= label_tag 'pickup_date', 'From:' , class: 'mr-sm-2' %>
-          <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control mr-sm-2', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
+          <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control mr-sm-2', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
           <%= label_tag 'return_date', 'To:' , class: 'mr-sm-2' %>
-          <%= text_field_tag :return_date, params[:return_date], class: 'form-control mr-sm-2', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true'} %>
+          <%= text_field_tag :return_date, params[:return_date], class: 'form-control mr-sm-2', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
       <% end %>
 
     </nav>
