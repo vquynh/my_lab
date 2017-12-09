@@ -4,56 +4,49 @@ class EquipmentController < ApplicationController
          user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
 
   def index
-    @available_items = Equipment.search(params[:search])
-                                .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @page_title = "MyLab Equipment"
   end
 
   def el
-    @available_items = Equipment.el.search(params[:search])
-                           .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter.el
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @page_title = "MyLab Electronic Equipment"
   end
 
   def measure
-    @available_items = Equipment.measure.search(params[:search])
-                           .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter.measure
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @page_title = "MyLab Messuring Equipment"
   end
 
   def misc
-    @available_items = Equipment.misc.search(params[:search])
-                           .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter.misc
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
   def computer
-    @available_items = Equipment.computer.search(params[:search])
-                           .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter.computer
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
   def audio
-    @available_items = Equipment.audio.search(params[:search])
-                           .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter.audio
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
   end
 
   def video
-    @available_items = Equipment.video.search(params[:search])
-                           .filter_availability(params[:pickup_date], params[:return_date])
+    @available_items = set_search_and_filter.video
     @booking = current_booking
     @booking_item = @booking.booking_items.new
     @booking_item = current_booking.booking_items.new
@@ -109,7 +102,15 @@ class EquipmentController < ApplicationController
     end
   end
 
-private 
+  def set_search_and_filter
+    if !params[:pickup_date].to_s.empty? && !params[:return_date].to_s.empty?
+      Equipment.search(params[:search]).filter_availability(params[:pickup_date], params[:return_date])
+    else
+      Equipment.search(params[:search]).filter_availability(Date.today, Date.today)
+    end
+  end
+
+private
   def equipment_params
     params.require(:equipment).permit(:name,
                                       :inv_nr, 

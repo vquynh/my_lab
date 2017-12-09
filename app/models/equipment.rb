@@ -32,7 +32,7 @@ class Equipment < ApplicationRecord
     if search
       where('name ILIKE ? OR inv_nr ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
     else
-      all
+      self
     end
   end
 
@@ -46,7 +46,7 @@ class Equipment < ApplicationRecord
                                  "%#{pickup_date}%", "%#{return_date}%")
       Equipment.where('id NOT IN (?)', equipment_ids)
     else
-      all
+      self
     end
   end
 end
