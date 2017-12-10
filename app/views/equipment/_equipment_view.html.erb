@@ -1,11 +1,13 @@
 <%= render "shared/application_nav" %>
-<%= yield %>
-<%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
-<%= link_to "Login", new_user_session_path, class: "btn btn-success login" if current_user.is_a?(GuestUser) %>
-<%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
+<div class="album text-muted">
+  <%= yield %>
+  <%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
+  <%= link_to "Login", new_user_session_path, class: "btn btn-success login add-new" if current_user.is_a?(GuestUser) %>
+  <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
 
-<div class="row equipment-container">
-  <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
+  <div class="row equipment-container">
+    <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
+  </div>
 </div>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>

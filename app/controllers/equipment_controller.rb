@@ -1,5 +1,4 @@
 class EquipmentController < ApplicationController
-  layout "equipment"
   access all: %i[show index el measure misc computer audio video],
          user: {except: %i[destroy new create update edit]}, labor_staff: :all
 
