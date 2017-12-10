@@ -1,44 +1,44 @@
+  <!-- Start of side-bar -->
+  <nav class="sidebar bg-dark">
+    <ul class="nav nav-pills flex-column ">
+      <li class="nav-item">
+        <a class="nav-link active" href="/equipment">All Equipment <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/measuring-equipment">Measuring</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/electric-equipment">Electronics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/audio-equipment">Audio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/video-equipment">Video</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/computer-equipment">Computer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/misc-equipment">Miscellaneous</a>
+      </li>
+    </ul>
+    <%= form_tag equipment_index_path, :method => 'get' do %>
+      <%= submit_tag 'Search by name', :name => nil , class: 'form-control btn btn-info' %>
+      <%= text_field_tag :search, params[:search], class: 'form-control' %>
+    <% end %>
+    <br>
 
-        <!-- Start of side-bar -->
-    <nav class="hidden-xs-down bg-faded sidebar">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="/equipment">All Equipment <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/measuring-equipment">Measuring</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/electric-equipment">Electronics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/audio-equipment">Audio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/video-equipment">Video</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/computer-equipment">Computer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/misc-equipment">Miscellaneous</a>
-        </li>
-      </ul>
-      <%= form_tag equipment_index_path, :method => 'get' do %>
-          <%= submit_tag 'Search by name', :name => nil , class: 'form-control btn btn-info' %>
-          <%= text_field_tag :search, params[:search], class: 'form-control' %>
-      <% end %>
-      <br>
-
-      <%= form_tag equipment_index_path, :method => 'get' do %>
-          <%= submit_tag 'Filter by date', :name => nil , class: 'form-control btn btn-info' %>
-          <%= label_tag 'pickup_date', 'From:' , class: 'mr-sm-2' %>
-          <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
-          <%= label_tag 'return_date', 'To:' , class: 'mr-sm-2' %>
-          <%= text_field_tag :return_date, params[:return_date], class: 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
-      <% end %>
-    </nav>
-    <!-- End of side-bar -->
+    <%= form_tag equipment_index_path, :method => 'get' do %>
+      <%= submit_tag 'Filter by date', :name => nil , class: 'form-control btn btn-info' %>
+      <%= label_tag 'pickup_date', 'From:' , class: 'mr-sm-2' %>
+      <%= text_field_tag :pickup_date, params[:pickup_date], class: 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
+      <%= label_tag 'return_date', 'To:' , class: 'mr-sm-2' %>
+      <%= text_field_tag :return_date, params[:return_date], class: 'form-control', :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
+    <% end %>
+  </nav>
+  <!-- End of side-bar -->
 
 
-    <%= render 'equipment_view' %>
+  <%= render 'equipment_view' %>
+

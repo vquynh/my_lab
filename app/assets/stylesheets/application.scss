@@ -41,20 +41,9 @@ td {
   top: 0;
   position: fixed;
   width: 100%;
-  height: 50px;
+  min-height: 50px;
 }
 
-
-.navbar a {
-  float: left;
-  margin-right: 5px;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
 
 
 .main {
@@ -131,7 +120,6 @@ body {
   height: 100%;
   background-color: #333;
   color: white;
-  text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
 
@@ -318,14 +306,11 @@ body {
 
 .sidebar {
   position: fixed;
-  top: 51px;
-  bottom: 0;
   left: 0;
+  top: 55px;
   z-index: 1000;
-  padding: 20px;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  border-right: 1px solid #eee;
 }
 
 /* Sidebar navigation */
@@ -350,12 +335,6 @@ body {
   border-radius: 0;
 }
 
-.album {
-  min-height: 50rem; /* Can be removed; just added for demo purposes */
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: #f7f7f7;
-}
 
 .home-card {
   float: left;
