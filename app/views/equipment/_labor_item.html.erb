@@ -1,20 +1,18 @@
 
 <div class="home-card">
   <%= image_tag labor_item.thumb_image unless labor_item.thumb_image.nil? %>
-  <p class="home-card-text"><%= link_to labor_item.name, equipment_show_path(labor_item)  %></p>
+  <p class="home-card-text"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></p>
   <p class="home-card-text"><%= labor_item.description %></p>
-  <% if logged_in?(:labor_staff) %> 
-    <button class="btn btn-default"><%= link_to "Edit", edit_equipment_path(labor_item) %></button>
+  <td><%= "Total supply: " + labor_item.quantity.to_s %></td>
+  <td><%= "Available: " + labor_item.available_quantity(params[:pickup_date], params[:return_date]).to_s %></td>
+  <% if logged_in?(:labor_staff) %>
+    <button class="btn btn-primary"><%= link_to "Edit", edit_equipment_path(labor_item) %></button>
     <button class="btn btn-danger"><%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' } %></button>
   <% else %>
     <%= form_for @booking_item, remote: true do |f| %>
-      <div class="input-group">
-        <%= f.number_field :quantity, class: "form-control col-md-3", value: 1, min: 1 %>
-        <div class="input-group-btn">
-          <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
-          <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>
-        </div>
-      </div>
-    <% end %> 
+      <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]) %>
+      <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
+      <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>
+    <% end %>
   <% end %>
 </div>

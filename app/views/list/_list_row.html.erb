@@ -7,7 +7,7 @@
           <%= image_tag labor_item.thumb_image, size: "210x140", class: "item-img" %>
         </div>
         <div class="item-img" >
-          <%= labor_item.name %>
+          <%= labor_item.name + " - " +(labor_item.inv_nr).to_s %>
         </div>
       </div>
       <br>
@@ -16,7 +16,7 @@
       <%= form_for booking_item do |f| %>
         <div class="row">
           <div class="col-md-3">
-            <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1 %>
+            <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date])  %>
             <%= f.hidden_field :equipment_id, value: labor_item.id %>
           </div>
           <div class="col-md-3">

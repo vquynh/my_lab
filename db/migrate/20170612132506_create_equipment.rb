@@ -2,7 +2,7 @@ class CreateEquipment < ActiveRecord::Migration[5.1]
   def change
     create_table :equipment do |t|
       t.string :name
-      t.integer :inv_nr
+      t.string :inv_nr
       t.text :description
       t.integer :quantity
       t.text :thumb_image
