@@ -1,8 +1,7 @@
-<%= render "shared/application_nav" %>
 <div class="album text-muted">
   <%= yield %>
-  <%= link_to "Register", new_user_session_path, class: "btn btn-secondary add-new" if current_user.is_a?(GuestUser) %>
-  <%= link_to "Login", new_user_session_path, class: "btn btn-success login add-new" if current_user.is_a?(GuestUser) %>
+  <%= link_to "Register", new_user_session_path, class: "btn btn-secondary" if current_user.is_a?(GuestUser) %>
+  <%= link_to "Login", new_user_session_path, class: "btn btn-success" if current_user.is_a?(GuestUser) %>
   <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:labor_staff) %>
 
   <div class="row equipment-container">
