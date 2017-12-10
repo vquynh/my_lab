@@ -36,17 +36,25 @@ class Equipment < ApplicationRecord
     end
   end
 
-  # @param [Object] return_date
   # @param [Object] pickup_date
-  def self.filter_availability(pickup_date, return_date)
+  # @param [Object] return_date
+  # @return [Object] quantity
+  def available_quantity(pickup_date, return_date)
     if pickup_date && return_date
-      equipment_ids = Booking.joins(:booking_items)
-                          .select('equipment_id')
-      .where('(pickup_date, return_date) OVERLAPS (?,?)',
-                                 "%#{pickup_date}%", "%#{return_date}%")
-      Equipment.where('id NOT IN (?)', equipment_ids)
+      booked_quantity = Booking
+                               .joins(:booking_items)
+                               .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', "%#{pickup_date}%", "%#{return_date}%", id)
+                               .group(:equipment_id)
+                            .sum(:quantity)
     else
-      all
+      booked_quantity = Booking
+                            .joins(:booking_items)
+                            .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', Date.today, Date.today, id)
+                            .group(:equipment_id)
+                            .sum(:quantity)
+
     end
+    booked_quantity.empty? ? quantity : quantity - booked_quantity.reduce(:-).drop(1).join.to_i
   end
+
 end

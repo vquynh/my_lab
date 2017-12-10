@@ -22,4 +22,7 @@
 //= require fullcalendar
 
 $('#calendar').fullCalendar({});
+$('.datepicker').datepicker({
+    startDate: '-3d'
+});
 

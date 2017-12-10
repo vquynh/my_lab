@@ -24,7 +24,11 @@ a:hover {
 }
 
 body {
-  min-height: 75rem; /* Can be removed; just added for demo purposes */
+  padding-bottom: 70px;
+}
+
+td {
+  font-size: 10px;
 }
 
 
@@ -33,7 +37,30 @@ body {
 }
 
 .navbar {
-  margin-bottom: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+}
+
+.navbar a {
+  float: left;
+  margin-right: 5px;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
 }
 
 .jumbotron {
@@ -103,8 +130,6 @@ html,
 body {
   height: 100%;
   background-color: #333;
-}
-body {
   color: white;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
@@ -261,6 +286,7 @@ body {
 }
 
 .regist > .card {
+
   width: 48rem;
   margin: 0 auto;
   float: none;
@@ -276,13 +302,92 @@ body {
 .about {
   margin-top: 10rem;
 }
-.mylab > a {
-  color: white;
-}
+
 .listtext {
   margin-top: 5rem;
 }
 .item-img {
   margin-left: 4rem;
   margin-top: 0.5rem;
+}
+
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+}
+
+/* Sidebar navigation */
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.sidebar .nav-link {
+  border-radius: 0;
+}
+
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.home-card {
+  float: left;
+  width: 33%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+.home-card img {
+  margin-bottom: .75rem;
+  margin-right: 0.5rem;
+}
+
+.equipment-container {
+  margin-left: 15rem;
+  margin-top: 1rem;
+}
+
+.add-new{
+  margin-left: 12rem;
+  margin-top: 1rem;
+}
+
+.pr{
+  padding-right: 2rem;
+}
+
+.login, .regist{
+  padding-top: 70px;
+}
+
+
+.mylab > a {
+  color: white;
 }
