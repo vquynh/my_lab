@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/twbs/bootstrap-rubygem
-  revision: 5ae93e717519e910360350e6c0396efae8aff716
-  specs:
-    bootstrap (4.0.0.beta2.1)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.3, < 2)
-      sass (>= 3.5.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,10 +41,14 @@ GEM
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
-    autoprefixer-rails (7.2.1)
+    autoprefixer-rails (7.2.2)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap (4.0.0.beta2.1)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.3, < 2)
+      sass (>= 3.5.2)
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
@@ -240,7 +235,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  bootstrap!
+  bootstrap (~> 4.0.0.beta2)
   bootstrap-datepicker-rails
   byebug
   capistrano (~> 3.7, >= 3.7.1)
