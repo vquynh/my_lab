@@ -1,55 +1,45 @@
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= @page_title %></title>
-    <%= csrf_meta_tags %>
-  </head>
-  </body>
-    <div class="main">
-      <div class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">My Lab</h1>
-          <p class="lead text-muted">A demo website for booking and managing laboratory equipment.</p>
-        </div>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">My Lab</h1>
+        <p class="lead text-muted">A demo website for booking and managing laboratory equipment.</p>
       </div>
+    </section>
 
-      <div class="album text-muted">
-        <div class="container">
-          <p>Hi, <%= current_user.first_name %> <p>
-          <h3 class="headline">New Equipment</h3>
-          <div class="row">
-            <% @new_items.each do |new_item| %>
-              <div class="home-card">
-                <%= image_tag new_item.thumb_image unless new_item.thumb_image.nil? %>
-                <p class="home-card-text"><%= link_to new_item.name, equipment_path(new_item)  %></p>
-                <p class="home-card-text"><%= new_item.description %></p>
-              </div>
-            <% end %>
-          </div>
-          <h3 class="headline">New Projects</h3>
-          <div class="row">
-            <% @new_projects.each do |new_project| %>
-              <div class="home-card">
-                <%= image_tag new_project.thumb_image unless new_project.thumb_image.nil? %>
-                <p class="home-card-text link-text"><%= link_to new_project.name, project_path(new_project) %></p>
-                <p class="home-card-text"><%= new_project.description %></p>
-              </div>
-            <% end %>
-          </div>
-          <h3 class="headline">Recently Booked</h3>
-          <div class="row">
-            <% @recently_booked_items.each do |recent_item| %>
-              <div class="home-card">
-                <%= image_tag recent_item.thumb_image unless recent_item.thumb_image.nil? %>
-                <p class="home-card-text"><%= link_to recent_item.name, equipment_path(recent_item)  %></p>
-                <p class="home-card-text"><%= recent_item.description %></p>
-              </div>
-            <% end %>
-          </div>
+    <div class="album text-muted">
+      <div class="container">
+        <p>Hi, <%= current_user.first_name %> <p>
+        <h3 class="headline">New Equipment</h3>
+        <div class="row">
+          <% @new_items.each do |new_item| %>
+            <div class="home-card">
+              <%= image_tag new_item.thumb_image unless new_item.thumb_image.nil? %>
+              <p class="home-card-text"><%= link_to new_item.name, equipment_path(new_item)  %></p>
+              <p class="home-card-text"><%= new_item.description %></p>
+            </div>
+          <% end %>
+        </div>
+        <h3 class="headline">New Projects</h3>
+        <div class="row">
+          <% @new_projects.each do |new_project| %>
+            <div class="home-card">
+              <%= image_tag new_project.thumb_image unless new_project.thumb_image.nil? %>
+              <p class="home-card-text link-text"><%= link_to new_project.name, project_path(new_project) %></p>
+              <p class="home-card-text"><%= new_project.description %></p>
+            </div>
+          <% end %>
+        </div>
+        <h3 class="headline">Recently Booked</h3>
+        <div class="row">
+          <% @recently_booked_items.each do |recent_item| %>
+            <div class="home-card">
+              <%= image_tag recent_item.thumb_image unless recent_item.thumb_image.nil? %>
+              <p class="home-card-text"><%= link_to recent_item.name, equipment_path(recent_item)  %></p>
+              <p class="home-card-text"><%= recent_item.description %></p>
+            </div>
+          <% end %>
+        </div>
 
           <h3 class="headline">Most Favorite Equipment</h3>
           <div class="row">
