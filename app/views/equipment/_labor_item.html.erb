@@ -15,13 +15,22 @@
         <button class="btn btn-danger"><%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' } %></button>
       <% else %>
         <%= form_for @booking_item, remote: true do |f| %>
-          <div class="input-group">
-            <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
-            <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
-            <span class="input-group-btn">
-              <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>
-            </span>
-          </div>
+          <% if labor_item.available_quantity(params[:pickup_date], params[:return_date]) == 0 %>
+            <div class="input-group">
+              <span class="input-group-btn tooltip-toggle" aria-label="Try another day" tabindex="0">
+                  <%= f.submit "Currently Booked", class: "btn btn-light", disabled: 'true' if logged_in?(:user) %>
+              </span>
+            </div>
+
+          <% else %>
+            <div class="input-group tooltip-toggle" aria-label="Minimum: 1, maximum: available amount" tabindex="0">
+              <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
+              <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
+              <span class="input-group-btn">
+                  <%= f.submit "Add to List", class: "btn btn-primary", disable:'true' if logged_in?(:user) %>
+              </span>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>

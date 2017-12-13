@@ -17,12 +17,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
-
 //= require moment
 //= require fullcalendar
 
 $('#calendar').fullCalendar({});
-$('.datepicker').datepicker({
-    startDate: '-3d'
-});
 
