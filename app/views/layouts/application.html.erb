@@ -17,6 +17,7 @@
       <%= render "shared/application_nav"%>
     <% end %>
     <%= yield %>
+    <div id='remote_container'></div>
     <% if session[:source] %>
       <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
     <% end %>

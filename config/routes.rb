@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :booking_items, only: [:create, :update, :destroy]
 
   resources :bookings do
-      get 'indexadmin', on: :collection
+    get 'indexadmin', on: :collection
   end
 
   get 'projects/:id', to: 'projects#show', as: 'project_show'

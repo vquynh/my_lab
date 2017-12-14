@@ -1,6 +1,48 @@
 <h3 class="listtext">All Bookings</h3>
 <%= render @bookings %>
-
 <%= link_to "Add New Booking", new_booking_path, class: "btn btn-success" if logged_in?(:labor_staff)  %>
 
+<!-- calendar start-->
+
+<section id="main-content">
+  <section class="wrapper">
+    <h3><i class="fa fa-angle-right"></i> Booking Calendar</h3>
+    <!-- page start-->
+    <div class="row mt">
+      <aside class="col-md-2 mt">
+      </aside>
+      <aside class="col-md-9 mt">
+        <section class="panel">
+          <div class="panel-body">
+            <div id="calendar" class="has-toolbar"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+    <!-- page end-->
+  </section><! --/wrapper -->
+</section>
+
+<!--calendar end-->
+
+<script>
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        selectable: true,
+        selectHelper: true,
+        editable: true,
+        eventLimit: true,
+
+        select: function() {
+            $.getScript('/bookings/new', function() {});
+
+            fullCalendar('unselect');
+        }
+
+    });
+</script>
 

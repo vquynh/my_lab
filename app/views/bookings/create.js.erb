@@ -1,5 +1,12 @@
 <% if @booking.errors.any? || @booking_item.errors.any? %>
-alert("not valid.")
+    alert("not valid.")
 <% else %>
   $(".list-text").html("<%= escape_javascript(render 'layouts/list_text') %>")
 <% end %>
+
+$('#calendar').fullCalendar(
+    'renderEvent',
+    $.parseJSON("<%=j render(@booking, format: :json).html_safe %>"),
+    true
+);
+$('.modal').modal('hide');

@@ -1,8 +1,9 @@
       
-<%= form_for(@booking) do |form| %>
+<%= form_for(@booking, remote: true) do |form| %>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
+        <%= form.hidden_field :user_id, value: current_user.id if logged_in?(:user)  %>
         <%= form.label :project %>
         <%= form.collection_select :project_id, Project.all,:id,:name, include_blank: true, class: "form-control"   %>
       </div>

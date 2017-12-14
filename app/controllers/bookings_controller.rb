@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 
 
   def indexadmin
-    @bookings = Booking.all
+    @bookings = Booking.where(pickup_date: params[:start]..params[:end])
   end
   
   def index
@@ -16,8 +16,12 @@ class BookingsController < ApplicationController
     session[:booking_id] = @booking.id
   end
 
+  # POST /bookings
+  # POST /bookings.json
   def create
-    @booking = current_booking
+    @booking = Booking.new(booking_params)
+    @booking.save!
+
   end
 
   def edit
@@ -39,9 +43,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
-    @booking_items = @booking.booking_items
-    @labor_item = Equipment.joins(:booking_items)
   end
 
   def destroy
@@ -63,6 +64,7 @@ private
   def booking_params
     params.require(:booking).permit(:pickup_date,
                                     :return_date,
+                                    :user_id,
                                     :current_user,
                                     :project_id,
                                     :booking_status_id,
