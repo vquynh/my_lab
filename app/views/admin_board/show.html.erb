@@ -8,7 +8,8 @@
           <div class="content-panel">
             <h4><i class="fa fa-angle-right"></i> Bookings by project </h4>
             <div class="panel-body text-center">
-                <%= pie_chart Project.joins(:bookings).group(:name).count %>
+                <%= pie_chart Project.joins(:bookings).group(:name).count,
+                              donut: true, library: { animation: { easing: 'easeOutQuad' }} %>
             </div>
           </div>
         </div>
@@ -16,7 +17,8 @@
           <div class="content-panel">
             <h4><i class="fa fa-angle-right"></i> Booking items by category</h4>
             <div class="panel-body text-center">
-                <%= pie_chart Category.joins(:equipment => :booking_items).group(:name).count %>
+                <%= pie_chart Category.joins(:equipment => :booking_items).group(:name).count,
+                     donut: true, library: { animation: { easing: 'easeOutQuad' }} %>
             </div>
           </div>
         </div>
@@ -26,7 +28,8 @@
           <div class="content-panel">
             <h4><i class="fa fa-angle-right"></i> Bookings by days of the week </h4>
             <div class="panel-body text-center">
-              <%= line_chart Booking.group_by_day_of_week(:pickup_date, format: "%a").count %>
+              <%= line_chart Booking.group_by_day_of_week(:pickup_date, format: "%a").count,
+                             library: { animation: { easing: 'easeOutQuad' }}%>
             </div>
           </div>
         </div>
@@ -34,7 +37,8 @@
           <div class="content-panel">
             <h4><i class="fa fa-angle-right"></i> Bookings by months of the year </h4>
             <div class="panel-body text-center">
-              <%= line_chart Booking.group_by_month_of_year(:pickup_date, format: "%b").count %>
+              <%= line_chart Booking.group_by_month_of_year(:pickup_date, format: "%b").count,
+                             library: { animation: { easing: 'easeOutQuad' }}%>
             </div>
           </div>
         </div>
