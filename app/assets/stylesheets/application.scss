@@ -17,6 +17,15 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+/*
+ * Alerts and Notices
+ */
+
+.alert, .notice {
+  position: fixed;
+  z-index: 999999999;
+}
+
 
 /*
  * Navbar
