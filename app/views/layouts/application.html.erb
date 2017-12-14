@@ -11,11 +11,8 @@
 
   <body>
     <p class="notice"><%= notice %></p>
-    <% if logged_in?(:labor_staff) %>
-      <%= render "shared/admin_application_nav"%>
-    <% else%>
-      <%= render "shared/application_nav"%>
-    <% end %>
+
+    <%= render "shared/application_nav"%>
     <%= yield %>
     <% if session[:source] %>
       <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
