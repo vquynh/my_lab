@@ -20,6 +20,7 @@
               <span class="input-group-btn tooltip-toggle" aria-label="Try another day" tabindex="0">
                   <%= f.submit "Currently Booked", class: "btn btn-light", disabled: 'true' if logged_in?(:user) %>
               </span>
+
             </div>
 
           <% else %>
@@ -27,7 +28,7 @@
               <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
               <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
               <span class="input-group-btn">
-                  <%= f.submit "Add to List", class: "btn btn-primary", disable:'true' if logged_in?(:user) %>
+                  <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>
               </span>
             </div>
           <% end %>

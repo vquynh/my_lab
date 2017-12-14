@@ -19,12 +19,11 @@ gem 'sass-rails', '~> 5.0'
 # Full calendar
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-#Use bootstrap
+# bootstrap, javascript stuffs
 gem 'bootstrap', '~> 4.0.0.beta2.1'
-gem 'bootstrap-datepicker-rails' # For showing calender in date fields insane
+gem 'bootstrap-datepicker-rails' # For showing calender in date fields
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

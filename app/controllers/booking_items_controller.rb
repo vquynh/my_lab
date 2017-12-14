@@ -10,9 +10,9 @@ class BookingItemsController < ApplicationController
       same_item.save!
     end
     @booking.save!
+    flash[:success] = 'Added to your list!'
     session[:booking_id] = @booking.id
   end
-
 
   def edit
     @booking_item = BookingItem.find(params[:id])
