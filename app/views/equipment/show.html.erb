@@ -1,13 +1,35 @@
-<h1>Show Equipment Details</h1>
+<div class="container ml-content pt-4">
+  <div class="row">
+  	<div class="col-12">
+  	  <div class="card">
 
+  	  	<div class="row">
 
-<%= image_tag @labor_item.main_image %>
+  	  	  <div class="col-xs-12 col-md-6">
+			<%= image_tag @labor_item.main_image, class: "img-fluid" %>
+		  </div>
 
-<h1><%= @labor_item.name + " - " +(@labor_item.inv_nr).to_s %></h1>
-<p><%= @labor_item.equipment_status.name %></p>
-<em><%= @labor_item.description %></em>
+		  <div class="col-xs-12 col-md-6">
+		  	<div class="card-body">
+		  	  <h2 class="card-title"><%= @labor_item.name + " - " +(@labor_item.inv_nr).to_s %></h2>
+			  <p class="card-text"><%= @labor_item.equipment_status.name %></p>
+			  <%= link_to 'Edit', edit_equipment_path(@labor_item) if logged_in?(:labor_staff) %>
+			  <%= link_to 'Back', equipment_index_path, class: "btn btn-primary" %>
+			</div>
+		  </div>
+     
+		</div>
 
-<%= link_to 'Edit', edit_equipment_path(@labor_item) if logged_in?(:labor_staff) %>
-<%= link_to 'Back', equipment_index_path %>
+		<div class="row">
+		  <div class="col-12">
+		   <div class="card-body">
+		     <p class="card-text"><%= @labor_item.description %></p>
+		   </div>
+		  </div>
+		</div>
 
+      </div>
+    </div>
+  </div>
+</div>
 

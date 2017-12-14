@@ -2,7 +2,7 @@
   <div class="card h-100">
     <%= image_tag labor_item.thumb_image, class: "card-img-top" unless labor_item.thumb_image.nil? %>
     <div class="card-body">
-      <h4 class="card-title"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></h4>
+      <h6 class="card-title"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></h6>
       <p class="card-text"><%= labor_item.description %></p>
     </div>
     <ul class="list-group list-group-flush">

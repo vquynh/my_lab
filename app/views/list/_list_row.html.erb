@@ -1,27 +1,35 @@
-<tr>
+<div class="list-group-item">
+  <div class="row">
 
-  <td>
-    <%= image_tag labor_item.thumb_image, class: "rounded ml-img-list" %>
-  </td>
+    <div class="col-4 col-sm-3 col-md-2 mb-3">
+      <%= image_tag labor_item.thumb_image, class: "img-fluid rounded" %>
+    </div>
 
-  <td class="item-img" >
-    <%= labor_item.name + " - " +(labor_item.inv_nr).to_s %>
-  </td>
+    <div class="col-12 col-sm-6 col-md-8 order-2 order-sm-1">
+      <div class="row">
 
-  <td>
-    <%= form_for booking_item do |f| %>
-      <div class="input-group">
-        <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date])  %>
-        <span class="input-group-btn">
-          <%= f.submit "Update Quantity" , class: "btn btn-primary" %>
-        </span>
+        <div class="col-12 col-sm-12 col-md-6">
+          <h6><%= labor_item.name + " - " +(labor_item.inv_nr).to_s %></h6>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6">
+          <%= form_for booking_item do |f| %>
+            <div class="input-group">
+              <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date])  %>
+              <span class="input-group-btn">
+                <%= f.submit "Update Quantity" , class: "btn btn-primary" %>
+              </span>
+            </div>
+            <%= f.hidden_field :equipment_id, value: labor_item.id %>
+          <% end %>
+        </div>
+
       </div>
-      <%= f.hidden_field :equipment_id, value: labor_item.id %>
-    <% end %>
-  </td>
+    </div>
 
-  <td>
-    <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
-  </td>
+    <div class="col-8 col-sm-3 col-md-2 order-1 order-sm-2 text-right">
+      <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
+    </div>
 
-</tr>
+  </div>
+</div>

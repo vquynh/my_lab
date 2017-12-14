@@ -1,4 +1,5 @@
 <% if !@booking_item.nil? && @booking_item.errors.any? %>
+
   <div class="alert alert-danger">
     <ul>
     <% @booking_item.errors.full_messages.each do |msg| %>
@@ -6,23 +7,25 @@
     <% end %>
     </ul>
   </div>
+
 <% end %>
+
+
 <% if @booking_items.size == 0 %>
-  <p class="text-center">
+
+  <div class="alert alert-info" role="alert">
     There are no items in your equipment list.  Please go to equipment menu and add some items to your list.
-  </p>
-  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-info" %>
+  </div>
+  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-primary" %>
+
 <% else %>
 
-  <table class="table">
-    <tbody>
-      <% @booking_items.each do |booking_item| %>
-        <%= render 'list/list_row', booking_item: booking_item, labor_item: booking_item.equipment %>
-      <% end %>
-    </tbody>
-  </table>
-
-  <div class="btn-group">
-    <%= link_to "To Booking", booklist_path, class: "btn btn-success" %>
+  <div class="list-group">
+    <% @booking_items.each do |booking_item| %>
+      <%= render 'list/list_row', booking_item: booking_item, labor_item: booking_item.equipment %>
+    <% end %>
   </div>
+
+  <%= link_to "To Booking", booklist_path, class: "btn btn-success my-3" %>
+
 <% end %>

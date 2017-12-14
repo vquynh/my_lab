@@ -1,5 +1,6 @@
-<h3 class="listtext">All Projects</h3>
-
-<%= link_to "Add New Project", new_project_path if logged_in?(:labor_staff)  %>
-
-<%= render @projects %>
+<div class="container ml-content pt-4">
+  <%= link_to "Add New Project", new_project_path if logged_in?(:labor_staff)  %>
+  <div class="row">
+    <%= render @projects %>
+   </div>
+</div>
