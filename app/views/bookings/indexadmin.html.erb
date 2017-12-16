@@ -1,11 +1,10 @@
-<h3 class="listtext">All Bookings</h3>
-<%= render @bookings %>
+
 <%= link_to "Add New Booking", new_booking_path, class: "btn btn-success" if logged_in?(:labor_staff)  %>
 
 <!-- calendar start-->
 
 <section id="main-content">
-  <section class="wrapper">
+  <section class="wrapper ml-content">
     <h3><i class="fa fa-angle-right"></i> Booking Calendar</h3>
     <!-- page start-->
     <div class="row mt">
@@ -36,11 +35,31 @@
         selectHelper: true,
         editable: true,
         eventLimit: true,
+        events: '/bookings/indexadmin.json',
 
         select: function() {
             $.getScript('/bookings/new', function() {});
 
             fullCalendar('unselect');
+        },
+
+        eventDrop: function(event, delta, revertFunc) {
+            booking_data = {
+                booking: {
+                    id: event.id,
+                    pickup_date: event.start.format(),
+                    return_date: event.end.format()
+                }
+            };
+            $.ajax({
+                url: event.update_url,
+                data: booking_data,
+                type: 'PATCH'
+            });
+        },
+
+        eventClick: function(event, jsEvent, view) {
+            $.getScript(event.edit_url, function() {});
         }
 
     });

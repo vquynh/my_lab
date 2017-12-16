@@ -2,7 +2,7 @@ date_format = '%Y-%m-%d'
 
 json.id booking.id
 json.start booking.pickup_date.strftime(date_format)
-json.end booking.return_date.strftime(date_format)
+json.end (booking.return_date + 1.days).strftime(date_format)
 
 json.user_id booking.user_id
 json.project_id booking.project_id

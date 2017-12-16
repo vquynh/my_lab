@@ -4,11 +4,18 @@ class BookingsController < ApplicationController
 
   def indexadmin
     @bookings = Booking.where(pickup_date: params[:start]..params[:end])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
   
   def index
-    @bookings = current_user.bookings
-    @users = User.joins(:bookings).distinct
+    @bookings = Booking.where(pickup_date: params[:start]..params[:end])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
@@ -43,6 +50,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
+    @booking_items = @booking.booking_items
   end
 
   def destroy
