@@ -16,6 +16,8 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "jquery-ui";
+
 
 
 /*
@@ -112,3 +114,36 @@
     transition: all 0.75s ease;
   }
 }
+
+
+
+
+/*--------------Tasks Widget--------------*/
+
+section {
+  padding: 0px;
+
+}
+.task-content {
+  margin-bottom: 30px;
+}
+
+.task-panel {
+  background: #fff;
+  text-align: left;
+  box-shadow: 0px 3px 2px #aab2bd;
+  margin: 5px;
+
+}
+.panel-body {
+  padding: 5px;
+}
+
+.panel-heading {
+  text-align: center;
+}
+
+.tasks-widget .task-content:after {
+  clear: both;
+}
+

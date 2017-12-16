@@ -15,15 +15,16 @@ class BookingsController < ApplicationController
     @bookings_unclaimed = Booking.unclaimed
     @bookings_overdue = Booking.overdue
     @bookings_returned = Booking.returned
+  end
 
-    def sort
-      params[:order].each do |key, value|
-        Booking.find(value[:id]).update(position: value[:position])
-      end
-
-      render body: nil
+  def sort
+    params[:order].each do |key, value|
+      Booking.find(value[:id]).update(position: value[:position])
     end
-  
+
+    render body: nil
+  end
+
   def index
     @bookings = current_user.bookings
     @users = User.joins(:bookings).distinct
@@ -84,7 +85,7 @@ class BookingsController < ApplicationController
     end
   end
 
-private
+  private
   def booking_params
     params.require(:booking).permit(:pickup_date,
                                     :return_date,
@@ -96,8 +97,10 @@ private
                                     )
 
   end
-private
+
+  private
   def users
     User.joins(:bookings)
   end
 end
+
