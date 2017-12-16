@@ -9,7 +9,20 @@ class BookingsController < ApplicationController
       format.html
       format.json
     end
-  end
+    @bookings_pending = Booking.pending
+    @bookings_confirmed = Booking.confirmed
+    @bookings_claimed = Booking.claimed
+    @bookings_unclaimed = Booking.unclaimed
+    @bookings_overdue = Booking.overdue
+    @bookings_returned = Booking.returned
+
+    def sort
+      params[:order].each do |key, value|
+        Booking.find(value[:id]).update(position: value[:position])
+      end
+
+      render body: nil
+    end
   
   def index
     @bookings = current_user.bookings
