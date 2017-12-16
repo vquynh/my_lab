@@ -12,11 +12,8 @@ class BookingsController < ApplicationController
   end
   
   def index
-    @bookings = Booking.where(pickup_date: params[:start]..params[:end])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @bookings = current_user.bookings
+    @users = User.joins(:bookings).distinct
   end
 
   def new
@@ -43,7 +40,11 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully updated.' }
+        if logged_in?(:labor_staff)
+          format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully updated.' }
+        else
+          format.html { redirect_to bookings_path, notice: 'Booking was successfully updated.' }
+        end
       else
         format.html { render :edit }
       end

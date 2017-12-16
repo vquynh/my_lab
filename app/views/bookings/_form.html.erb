@@ -33,6 +33,7 @@
         <%= form.submit "Submit", class: "btn btn-primary btn-block"   %>
       </div>
     </div>
+    <% if logged_in?(:labor_staff) %>
     <div class="col-md-3">
       <div class="form-group">
         <%= link_to 'Delete',
@@ -43,6 +44,7 @@
                     remote: true unless @booking.new_record? %>
       </div>
     </div>
+    <% end %>
   </div>
 <% end %>
       
