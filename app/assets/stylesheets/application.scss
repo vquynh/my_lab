@@ -118,15 +118,7 @@
 
 
 
-/*--------------Tasks Widget--------------*/
-
-section {
-  padding: 0px;
-
-}
-.task-content {
-  margin-bottom: 30px;
-}
+/*--------------Sortable Bookings--------------*/
 
 .task-panel {
   background: #fff;
@@ -143,7 +135,39 @@ section {
   text-align: center;
 }
 
-.tasks-widget .task-content:after {
-  clear: both;
+.pending li {
+  border-left-color: #5cb3fd;
+}
+
+.confirmed li {
+  border-left-color: #5cb85c;
+}
+
+.claimed li {
+  border-left-color: #efe24b;
+}
+
+.unclaimed li {
+  border-left-color: #fd7e14;
+}
+
+.overdue li {
+  border-left-color: #B00100;
+}
+
+#sortable {
+  list-style-type: none;
+  margin: 0 0 20px 0;
+  padding: 0;
+  width: 100%;
+}
+#sortable li {
+  padding-left: 3em;
+  font-size: 12px;
+  border-top: 0;
+  border-bottom-color: ghostwhite;
+  border-right: 0;
+  border-radius: 0;
+  margin-bottom: 0.5rem;
 }
 

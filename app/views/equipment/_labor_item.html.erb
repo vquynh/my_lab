@@ -11,8 +11,8 @@
     </ul>
     <div class="card-body">
       <% if logged_in?(:labor_staff) %>
-        <button class="btn btn-primary"><%= link_to "Edit", edit_equipment_path(labor_item) %></button>
-        <button class="btn btn-danger"><%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        <%= link_to "Edit", edit_equipment_path(labor_item), class:"btn btn-primary" %>
+        <%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
       <% else %>
         <%= form_for @booking_item, remote: true do |f| %>
           <% if labor_item.available_quantity(params[:pickup_date], params[:return_date]) == 0 %>

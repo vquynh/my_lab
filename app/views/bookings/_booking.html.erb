@@ -1,13 +1,8 @@
-<li class="list-primary" data-id="<%= booking.id %>">
-  <div class="task-checkbox">
-    <input type="checkbox" class="list-child" value=""  />
-  </div>
-  <div class="task-title">
-    <span class="task-title-sp"> <%=  link_to booking.uuid, booking_path(booking) %> </span>
-    <span class="badge bg-theme"><%= booking.booking_status.name %></span>
-    <div class="pull-right hidden-phone">
-      <%= link_to "Remove", booking_path(booking), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+<li class="list-primary list-group-item list-group-item-action card" data-id="<%= booking.id %>">
+  <div class="card-title">
+    <span> <%=  link_to "Booking" + booking.id.to_s, booking_path(booking) %> </span>
+    <span class="badge bg-theme"><%= booking.user.name %></span>
+    <%= link_to "✎", edit_booking_path(booking), method: :get, remote: true %>
 
-    </div>
   </div>
 </li>
