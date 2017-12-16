@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
 
 
   def indexadmin
+    @all_bookings = Booking.all
     @bookings = Booking.where(pickup_date: params[:start]..params[:end])
     respond_to do |format|
       format.html
