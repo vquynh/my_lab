@@ -10,9 +10,9 @@ class BookingItemsController < ApplicationController
       same_item.save!
     end
     @booking.save!
+    flash[:success] = 'Added to your list!'
     session[:booking_id] = @booking.id
   end
-
 
   def edit
     @booking_item = BookingItem.find(params[:id])
@@ -26,9 +26,9 @@ class BookingItemsController < ApplicationController
     respond_to do |format|
       if @booking_item.update(booking_item_params)
         if @booking.id == @list.id
-          format.html { redirect_to mylist_path, notice: 'Item was removed.' }
+          format.html { redirect_to mylist_path, notice: 'Item was updated.' }
         else
-          format.html { redirect_to edit_booking_path(@booking), notice: 'Item was removed.' }
+          format.html { redirect_to edit_booking_path(@booking), notice: 'Item was updated.' }
         end
       else
         format.html { render :edit }

@@ -1,71 +1,47 @@
 class EquipmentController < ApplicationController
-  layout "equipment"
-  access all: [:show, :index, :el, :measure, :misc, :computer, :audio, :video], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+  access all: %i[show index el measure misc computer audio video],
+         user: {except: %i[destroy new create update edit]}, labor_staff: :all
 
   def index
-    @available_items = Equipment.all
-    available_item
-    @page_title = "MyLab Equipment"
-  end
-
-  def available_item
-    all_bookings = Booking.all
-    @booking = current_booking
-    start_date = @booking.pickup_date
-    end_date = @booking.return_date
-
-    if !start_date.nil? && !end_date.nil?
-      overlapped_bookings = all_bookings.where("(pickup_date, return_date) OVERLAPS (?,?)", start_date, end_date)
-      unless overlapped_bookings.nil?
-        booked_items = []
-        overlapped_bookings.each do |booking|
-          booked_items += BookingItem.where("booking_id = ?", booking.id)
-        end
-
-        booked_items.each do |booking_item|
-          booked_labor_item += Equipment.find(booking_item.equipment_id)
-          @available_items -= Equipment.find(booked_labor_item.id)
-          @available_items
-        end
-      end
-    end
-    @booking_item = @booking.booking_items.new
+    @labor_items = Equipment.search(params[:search])
+    define_booking_and_booking_item
+    @page_title = "MyLab All Equipment"
   end
 
   def el
-    @available_items = Equipment.el
-    available_item
+    @labor_items = Equipment.search(params[:search]).el
+    define_booking_and_booking_item
     @page_title = "MyLab Electronic Equipment"
   end
 
   def measure
-    @available_items = Equipment.measure
-    available_item
+    @labor_items = Equipment.search(params[:search]).measure
+    define_booking_and_booking_item
     @page_title = "MyLab Messuring Equipment"
   end
 
   def misc
-    @available_items = Equipment.misc
-    available_item
-    @booking_item = current_booking.booking_items.new
+    @labor_items = Equipment.search(params[:search]).misc
+    define_booking_and_booking_item
+    @page_title = "MyLab Miscellaneous Equipment"
   end
 
   def computer
-    @available_items = Equipment.computer
-    available_item
-    @booking_item = current_booking.booking_items.new
+    @labor_items = Equipment.search(params[:search]).computer
+    define_booking_and_booking_item
+    @page_title = "MyLab Computer Equipment"
   end
 
   def audio
-    @available_items = Equipment.audio
-    available_item
-    @booking_item = current_booking.booking_items.new
+    @labor_items = Equipment.search(params[:search]).audio
+    define_booking_and_booking_item
+    @page_title = "MyLab Audio Equipment"
   end
 
   def video
-    @available_items = Equipment.video
-    available_item
-    @booking_item = current_booking.booking_items.new
+    @labor_items = Equipment.search(params[:search]).video
+    define_booking_and_booking_item
+    @page_title = "MyLab Video Equipment"
   end
 
   def new
@@ -102,6 +78,7 @@ class EquipmentController < ApplicationController
 
   def show
     @labor_item = Equipment.find(params[:id])
+    define_booking_and_booking_item
     @page_title = "Mylab #{@labor_item.name}"
   end
 
@@ -118,14 +95,23 @@ class EquipmentController < ApplicationController
     end
   end
 
-private 
+
+
+private
+  def define_booking_and_booking_item
+    @booking = current_booking
+    @booking_item = @booking.booking_items.new
+  end
+
   def equipment_params
     params.require(:equipment).permit(:name,
                                       :inv_nr, 
                                       :description, 
                                       :quantity, 
                                       :category_id, 
-                                      :equipment_status_id
+                                      :equipment_status_id,
+                                      :main_image,
+                                      :thumb_image
                                       )
 
   end

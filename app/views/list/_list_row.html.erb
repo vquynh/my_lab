@@ -1,33 +1,34 @@
-<div class="well">
+<tr>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="row">
-        <div>
-          <%= image_tag labor_item.thumb_image, size: "210x140", class: "item-img" %>
-        </div>
-        <div class="item-img" >
-          <%= labor_item.name %>
-        </div>
+  <td>
+    <%= image_tag labor_item.thumb_image, class: "rounded ml-img-list" %>
+  </td>
+
+  <td class="item-img" >
+    <%= labor_item.name + " - " +(labor_item.inv_nr).to_s %>
+  </td>
+
+  <td>
+    <%= form_for booking_item do |f| %>
+      <div class="input-group tooltip-toggle" aria-label="Minimum: 1, maximum: available amount" tabindex="0">
+        <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date])  %>
+        <span class="input-group-btn">
+          <%= f.submit "Update Quantity" , class: "btn btn-primary" %>
+        </span>
       </div>
-      <br>
-    </div>
-    <div class="col-md-6">
-      <%= form_for booking_item do |f| %>
-        <div class="row">
-          <div class="col-md-3">
-            <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1 %>
-            <%= f.hidden_field :equipment_id, value: labor_item.id %>
-          </div>
-          <div class="col-md-3">
-            <div class="btn-group">
-              <%= f.submit "Update Quantity" , class: "btn btn-primary" %>
-              <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
-            </div>
-          </div>
+      <% if booking_item.quantity.to_i > labor_item.available_quantity(params[:pickup_date], params[:return_date]) %>
+        <div class="alert alert-danger" role="alert">
+          <strong>Oh no!</strong> There is only <%= labor_item.available_quantity(params[:pickup_date], params[:return_date]) %> left to book. Please change quantity!
         </div>
       <% end %>
-    </div>
-  </div>
+      <%= f.hidden_field :equipment_id, value: labor_item.id %>
+    <% end %>
+  </td>
 
-</div>
+  <td>
+    <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
+  </td>
+
+
+</tr>
+

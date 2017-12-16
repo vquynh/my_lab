@@ -1,59 +1,70 @@
+<section class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">My Lab</h1>
+    <p class="lead">A demo website for booking and managing laboratory equipment.</p>
+  </div>
+</section>
 
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= @page_title %></title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'page', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  </body>
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">My Lab</h1>
-        <p class="lead text-muted">My favorite laboratory where I can find the equipments I need for my projects.</p>
+<div class="album">
+  <div class="container">
+    <p>Hi, <%= current_user.first_name %> </p>
+    <h3>New Equipment</h3>
+    <div class="row">
+      <% @new_items.each do |new_item| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
+          <%= image_tag new_item.thumb_image, class: "card-img-top" unless new_item.thumb_image.nil? %>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to new_item.name, equipment_path(new_item)  %></h4>
+            <p class="card-text"><%= new_item.description %></p>
+          </div>
+        </div>
       </div>
-    </section>
+      <% end %>
+    </div>
+    <h3 class="headline">New Projects</h3>
+    <div class="row">
+      <% @new_projects.each do |new_project| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
+          <%= image_tag new_project.thumb_image, class: "card-img-top" unless new_project.thumb_image.nil? %>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to new_project.name, project_path(new_project) %></h4>
+            <p class="card-text"><%= new_project.description %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <h3 class="headline">Recently Booked</h3>
+    <div class="row">
+      <% @recently_booked_items.each do |recent_item| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
+          <%= image_tag recent_item.thumb_image, class: "card-img-top" unless recent_item.thumb_image.nil? %>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to recent_item.name, equipment_path(recent_item)  %></h4>
+            <p class="card-text"><%= recent_item.description %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
 
-    <div class="album text-muted">
-      <div class="container">
-        <p>Hi, <%= current_user.first_name %> <p>
-        <h3 class="headline">New Equipment</h3>
-        <div class="row">
-          <% @new_items.each do |new_item| %>
-            <div class="home-card">
-              <%= image_tag new_item.thumb_image unless new_item.thumb_image.nil? %>
-              <p class="home-card-text"><%= link_to new_item.name, equipment_path(new_item)  %></p>
-              <p class="home-card-text"><%= new_item.description %></p>
+      <h3 class="headline">Most Favorite Equipment</h3>
+      <div class="row">
+        <% @fav_items.each do |fav_item| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card">
+            <%= image_tag fav_item.thumb_image, class: "card-img-top" unless fav_item.thumb_image.nil? %>
+            <div class="card-body">
+              <h4 class="card-title"><%= link_to fav_item.name, equipment_path(fav_item)  %></h4>
+              <p class="card-text"><%= fav_item.description %></p>
             </div>
-          <% end %> 
+          </div>
         </div>
-        <h3 class="headline">New Projects</h3>
-        <div class="row">
-          <% @new_projects.each do |new_project| %>
-            <div class="home-card">
-              <%= image_tag new_project.thumb_image unless new_project.thumb_image.nil? %>
-              <p class="home-card-text link-text"><%= link_to new_project.name, project_path(new_project) %></p>
-              <p class="home-card-text"><%= new_project.description %></p>
-            </div>
-          <% end %> 
-        </div>
-        <h3 class="headline">Recently Booked</h3>
-        <div class="row">
-          <% @fav_items.each do |fav_item| %>
-            <div class="home-card">
-              <%= image_tag fav_item.thumb_image unless fav_item.thumb_image.nil? %>
-              <p class="home-card-text"><%= link_to fav_item.name, equipment_path(fav_item)  %></p>
-              <p class="home-card-text"><%= fav_item.description %></p>
-            </div>
-          <% end %> 
-        </div>
-        <!--<%= @count %>--> //To-do: implement most favorite items
+        <% end %>
       </div>
     </div>
-  </body>
-
-</html>
+  </div>
+</div>

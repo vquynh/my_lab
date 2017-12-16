@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><%= @page_title %></title>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'bookings', media: 'all', 'data-turbolinks-eval' =>'false'%>
-  <%= javascript_include_tag 'application'%>
-</head>
-
 <body>
 <section id="main-content">
   <section class="wrapper">
@@ -113,4 +102,67 @@
 </html>
 
 
+<!-- calendar start-->
+
+<section id="main-content">
+  <section class="wrapper ml-content">
+    <h3><i class="fa fa-angle-right"></i> Booking Calendar</h3>
+    <!-- page start-->
+    <div class="row mt">
+      <aside class="col-md-2 mt">
+      </aside>
+      <aside class="col-md-9 mt">
+        <section class="panel">
+          <div class="panel-body">
+            <div id="calendar" class="has-toolbar"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+    <!-- page end-->
+  </section><! --/wrapper -->
+</section>
+
+<!--calendar end-->
+
+<script>
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        selectable: true,
+        selectHelper: true,
+        editable: true,
+        eventLimit: true,
+        events: '/bookings/indexadmin.json',
+
+        select: function() {
+            $.getScript('/bookings/new', function() {});
+
+            fullCalendar('unselect');
+        },
+
+        eventDrop: function(event, delta, revertFunc) {
+            booking_data = {
+                booking: {
+                    id: event.id,
+                    pickup_date: event.start.format(),
+                    return_date: event.end.format()
+                }
+            };
+            $.ajax({
+                url: event.update_url,
+                data: booking_data,
+                type: 'PATCH'
+            });
+        },
+
+        eventClick: function(event, jsEvent, view) {
+            $.getScript(event.edit_url, function() {});
+        }
+
+    });
+</script>
 

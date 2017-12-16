@@ -28,4 +28,33 @@ class Equipment < ApplicationRecord
     where(category_id: 6)
   end
 
+  def self.search(search)
+    if search
+      where('name ILIKE ? OR inv_nr ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      all
+    end
+  end
+
+  # @param [Object] pickup_date
+  # @param [Object] return_date
+  # @return [Object] quantity
+  def available_quantity(pickup_date, return_date)
+    if pickup_date && return_date
+      booked_quantity = Booking
+                               .joins(:booking_items)
+                               .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', "%#{pickup_date}%", "%#{return_date}%", id)
+                               .group(:equipment_id)
+                            .sum(:quantity)
+    else
+      booked_quantity = Booking
+                            .joins(:booking_items)
+                            .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', Date.today, Date.today, id)
+                            .group(:equipment_id)
+                            .sum(:quantity)
+
+    end
+    booked_quantity.empty? ? quantity : quantity - booked_quantity.reduce(:-).drop(1).join.to_i
+  end
+
 end

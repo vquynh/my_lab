@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery prepend: true
   include DeviseWhitelist
   include SetSource
   include CurrentUserConcern
@@ -20,4 +20,5 @@ class ApplicationController < ActionController::Base
       Booking.find(session[:booking_id])
     end
   end
+
 end
