@@ -1,15 +1,14 @@
 <div class="container ml-content">
   <div class="row">
     <div class="col-md-7">
-      <%= image_tag @labor_item.main_image , width: '100%' %>
-
+      <%= image_tag equipment_img(@labor_item.main_image, 'main'), width: '100%' %>
     </div>
     <div class="col-md-5">
       <h1><%= @labor_item.name + " - " +(@labor_item.inv_nr).to_s %></h1>
       <p><%= @labor_item.equipment_status.name %></p>
       <p><%= @labor_item.description %></p>
       <%= link_to 'Edit', edit_equipment_path(@labor_item), class:'btn btn-primary' if logged_in?(:labor_staff) %>
-      <%= link_to 'Back', equipment_index_path, class:'btn btn-secondary' %>
+      <%= link_to 'See all equipment', equipment_index_path, class:'btn btn-outline-primary' %>
     </div>
 
   </div>

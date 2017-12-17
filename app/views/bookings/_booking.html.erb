@@ -1,8 +1,24 @@
 <li class="list-primary list-group-item list-group-item-action card" data-id="<%= booking.id %>">
   <div class="card-title">
     <span> <%=  link_to "Booking" + booking.id.to_s, booking_path(booking) %> </span>
-    <span class="badge bg-theme"><%= booking.user.name %></span>
-    <%= link_to "✎", edit_booking_path(booking), method: :get, remote: true %>
+    <% if logged_in?(:labor_staff) %>
+      <span class="badge bg-theme"><%= booking.user.name %></span>
 
+      <%= link_to "✎", edit_booking_path(booking), method: :get, remote: true %>
+    <% else %>
+        <span class="badge bg-theme"><%= booking.created_at %></span>
+        <% if booking.booking_status_id == 1 %>
+          <span class="tooltip-toggle" aria-label="Can edit pending booking" tabindex="0">
+            <%= link_to "✎", edit_booking_path(booking), method: :get, remote: true, class:'btn active' %>
+          </span>
+        <% else %>
+          <span class="tooltip-toggle" aria-label="Cannot edit confirmed booking" tabindex="0">
+            <%= link_to "✎", edit_booking_path(booking), method: :get, remote: true, class:'btn btn-light disabled', disable: 'true' %>
+          </span>
+        <% end %>
+        <div>
+          <%= booking.booking_status.name %>
+        </div>
+    <% end %>
   </div>
 </li>

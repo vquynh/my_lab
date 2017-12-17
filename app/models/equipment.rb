@@ -4,8 +4,8 @@ class Equipment < ApplicationRecord
   has_many :booking_items
   has_many :bookings, through: :booking_items
 
-  mount_uploader :thumb_image, EquipmentUploader
-  mount_uploader :main_image, EquipmentUploader
+  mount_uploader :thumb_image, ImageUploader
+  mount_uploader :main_image, ImageUploader
 
   def self.measure
     where(category_id: 1)
@@ -52,7 +52,7 @@ class Equipment < ApplicationRecord
     else
       booked_quantity = Booking
                             .joins(:booking_items)
-                            .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', Date.today, Date.today, id)
+                            .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', Date.today, Date.today + 1.days, id)
                             .group(:equipment_id)
                             .sum(:quantity)
 

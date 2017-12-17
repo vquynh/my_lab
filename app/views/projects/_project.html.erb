@@ -1,6 +1,6 @@
 
 <div class="home-card">
-  <%= image_tag project.thumb_image unless project.thumb_image.nil? %>
+  <%= image_tag project_img(project.thumb_image, 'thumb') %>
   <p class="home-card-text"><%= link_to project.name, project_show_path(project)  %></p>
   <p class="home-card-text"><%= project.description %></p>
   <% if logged_in?(:labor_staff) %> 
