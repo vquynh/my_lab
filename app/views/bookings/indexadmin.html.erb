@@ -1,115 +1,107 @@
-<body>
 <section class="ml-content">
-  <section class="wrapper">
-    <h3>All Bookings</h3>
-    <div class="row mt mb">
-      <div class="col-sm-2 no-padding">
-        <section class="task-panel tasks-widget">
-          <div class="panel-heading">
-            <div class="pull-left"> Pending </div>
-          </div>
-          <div class="panel-body">
-            <div class="task-content">
-              <ul id='sortable' class="pending <%= "sortable" if logged_in?(:labor_staff) %> ">
-                <%= render @bookings_pending %>
 
-              </ul>
+  <nav class="nav nav-tabs" id="bookingTab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-home" aria-selected="true">Sortable List</a>
+    <a class="nav-item nav-link" id="nav-calendar-tab" data-toggle="tab" href="#nav-calendar" role="tab" aria-controls="nav-profile" aria-selected="false">Calendar</a>
+  </nav>
+  <div class="wrapper tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+      <div class="row mt mb">
+        <div class="col-sm-2 no-padding">
+          <section class="task-panel tasks-widget">
+            <div class="panel-heading">
+              <div class="pull-left"> Pending </div>
             </div>
-          </div>
-        </section>
-      </div><!--/col-sm-2 -->
-      <div class="col-sm-2 no-padding">
-        <section class="task-panel">
-          <div class="panel-heading"> Confirmed </div>
-          <div class="panel-body">
-            <div class="task-content">
-              <ul id='sortable' class="confirmed <%= "sortable" if logged_in?(:labor_staff) %> ">
-                <%= render @bookings_confirmed %>
+            <div class="panel-body">
+              <div class="task-content">
+                <ul id='sortable' class="pending <%= "sortable" if logged_in?(:labor_staff) %> ">
+                  <%= render @bookings_pending %>
 
-              </ul>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
-      </div><!--/col-sm-2 -->
-      <div class="col-sm-2 no-padding">
-        <section class="task-panel tasks-widget">
-          <div class="panel-heading">Claimed</div>
-          <div class="panel-body">
-            <div class="task-content">
-              <ul id='sortable' class="claimed <%= "sortable" if logged_in?(:labor_staff) %> ">
-                <%= render @bookings_claimed %>
+          </section>
+        </div><!--/col-sm-2 -->
+        <div class="col-sm-2 no-padding">
+          <section class="task-panel">
+            <div class="panel-heading"> Confirmed </div>
+            <div class="panel-body">
+              <div class="task-content">
+                <ul id='sortable' class="confirmed <%= "sortable" if logged_in?(:labor_staff) %> ">
+                  <%= render @bookings_confirmed %>
 
-              </ul>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
-      </div><!--/col-sm-2 -->
-      <div class="col-sm-2 no-padding">
-        <section class="task-panel tasks-widget">
-          <div class="panel-heading">Unclaimed </div>
-          <div class="panel-body">
-            <div class="task-content">
-              <ul id='sortable' class="unclaimed <%= "sortable" if logged_in?(:labor_staff) %> ">
-                <%= render @bookings_unclaimed %>
-              </ul>
+          </section>
+        </div><!--/col-sm-2 -->
+        <div class="col-sm-2 no-padding">
+          <section class="task-panel tasks-widget">
+            <div class="panel-heading">Claimed</div>
+            <div class="panel-body">
+              <div class="task-content">
+                <ul id='sortable' class="claimed <%= "sortable" if logged_in?(:labor_staff) %> ">
+                  <%= render @bookings_claimed %>
+
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
-      </div><!--/col-sm-2 -->
-      <div class="col-sm-2 no-padding">
-        <section class="task-panel tasks-widget">
-          <div class="panel-heading">Overdue </div>
-          <div class="panel-body">
-            <div class="task-content">
-              <ul id='sortable' class="overdue <%= "sortable" if logged_in?(:labor_staff) %> ">
-                <%= render @bookings_overdue %>
-
-              </ul>
+          </section>
+        </div><!--/col-sm-2 -->
+        <div class="col-sm-2 no-padding">
+          <section class="task-panel tasks-widget">
+            <div class="panel-heading">Unclaimed </div>
+            <div class="panel-body">
+              <div class="task-content">
+                <ul id='sortable' class="unclaimed <%= "sortable" if logged_in?(:labor_staff) %> ">
+                  <%= render @bookings_unclaimed %>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
-      </div><!--/col-sm-2 -->
-      <div class="col-sm-2 no-padding">
-        <section class="task-panel tasks-widget">
-          <div class="panel-heading">Returned </div>
-          <div class="panel-body">
-            <div class="task-content">
-              <ul id='sortable' class="returned <%= "sortable" if logged_in?(:labor_staff) %> ">
-                <%= render @bookings_returned %>
+          </section>
+        </div><!--/col-sm-2 -->
+        <div class="col-sm-2 no-padding">
+          <section class="task-panel tasks-widget">
+            <div class="panel-heading">Overdue </div>
+            <div class="panel-body">
+              <div class="task-content">
+                <ul id='sortable' class="overdue <%= "sortable" if logged_in?(:labor_staff) %> ">
+                  <%= render @bookings_overdue %>
 
-              </ul>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
-      </div><!--/col-sm-2 -->
-    </div><!-- /row -->
-  </section><! --/wrapper -->
-</section><!-- /MAIN CONTENT -->
+          </section>
+        </div><!--/col-sm-2 -->
+        <div class="col-sm-2 no-padding">
+          <section class="task-panel tasks-widget">
+            <div class="panel-heading">Returned </div>
+            <div class="panel-body">
+              <div class="task-content">
+                <ul id='sortable' class="returned <%= "sortable" if logged_in?(:labor_staff) %> ">
+                  <%= render @bookings_returned %>
 
-</body>
-
-</html>
-
-
-<!-- calendar start-->
-
-<section id="main-content">
-  <section class="wrapper ml-content">
-    <h3><i class="fa fa-angle-right"></i> Booking Calendar</h3>
-    <!-- page start-->
-    <div class="row mt">
-      <aside class="col-md-2 mt">
-      </aside>
-      <aside class="col-md-9 mt">
-        <section class="panel">
-          <div class="panel-body">
-            <div id="calendar" class="has-toolbar"></div>
-          </div>
-        </section>
-      </aside>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div><!--/col-sm-2 -->
+      </div><!-- /row -->
     </div>
-    <!-- page end-->
-  </section><! --/wrapper -->
+    <div class="tab-panel fade" id="nav-calendar" role="tabpanel" aria-labelledby="nav-calendar-tab">
+      <div class="row mt">
+        <aside class="col-md-2 mt">
+        </aside>
+        <aside class="col-md-9 mt">
+          <section class="panel">
+            <div class="panel-body">
+              <div id="calendar" class="has-toolbar"></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!--calendar end-->
