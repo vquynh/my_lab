@@ -4,6 +4,9 @@ class Equipment < ApplicationRecord
   has_many :booking_items
   has_many :bookings, through: :booking_items
 
+  mount_uploader :thumb_image, EquipmentUploader
+  mount_uploader :main_image, EquipmentUploader
+
   def self.measure
     where(category_id: 1)
   end

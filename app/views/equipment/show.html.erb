@@ -1,13 +1,18 @@
-<h1>Show Equipment Details</h1>
+<div class="container ml-content">
+  <div class="row">
+    <div class="col-md-7">
+      <%= image_tag @labor_item.main_image , width: '100%' %>
 
+    </div>
+    <div class="col-md-5">
+      <h1><%= @labor_item.name + " - " +(@labor_item.inv_nr).to_s %></h1>
+      <p><%= @labor_item.equipment_status.name %></p>
+      <p><%= @labor_item.description %></p>
+      <%= link_to 'Edit', edit_equipment_path(@labor_item), class:'btn btn-primary' if logged_in?(:labor_staff) %>
+      <%= link_to 'Back', equipment_index_path, class:'btn btn-secondary' %>
+    </div>
 
-<%= image_tag @labor_item.main_image %>
-
-<h1><%= @labor_item.name + " - " +(@labor_item.inv_nr).to_s %></h1>
-<p><%= @labor_item.equipment_status.name %></p>
-<em><%= @labor_item.description %></em>
-
-<%= link_to 'Edit', edit_equipment_path(@labor_item) if logged_in?(:labor_staff) %>
-<%= link_to 'Back', equipment_index_path %>
+  </div>
+</div>
 
 

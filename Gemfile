@@ -32,8 +32,10 @@ gem 'chartkick', '~> 2.2.0'
 gem 'groupdate'
 
 gem 'redis-rails', '~> 5.0', '>= 5.0.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'carrierwave-aws', '~> 1.3'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
