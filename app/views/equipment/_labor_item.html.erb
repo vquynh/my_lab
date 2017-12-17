@@ -3,7 +3,15 @@
     <%= image_tag equipment_img(labor_item.thumb_image, 'thumb'), class: "card-img-top", width: '100%' %>
     <div class="card-body">
       <h4 class="card-title"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></h4>
-      <p class="card-text"><%= labor_item.description %></p>
+      <div class="collapse-group">
+        <p class="card-text">
+          <%= labor_item.description[0..30] %>
+          <span class="collapse" id="viewdetails<%= labor_item.id %>">
+            <%= labor_item.description[30..labor_item.description.length] %>
+          </span>
+          <a data-toggle="collapse" data-target="#viewdetails<%= labor_item.id %>" aria-expanded="false" aria-controls="viewdetails<%= labor_item.id %>">More... &raquo;</a>
+        </p>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><%= "Total supply: " + labor_item.quantity.to_s %></li>
