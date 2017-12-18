@@ -10,7 +10,7 @@ Project.create(name: 'Choose Project')
 
 puts "created placeholder project"
 
-BookingStatus.create(name: 'Submitted')
+BookingStatus.create(name: 'Pending')
 BookingStatus.create(name: 'Confirmed')
 BookingStatus.create(name: 'Unclaimed')
 BookingStatus.create(name: 'Claimed')

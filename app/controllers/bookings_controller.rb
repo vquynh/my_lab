@@ -3,9 +3,28 @@ class BookingsController < ApplicationController
 
 
   def indexadmin
-    @bookings = Booking.all
+    @all_bookings = Booking.all
+    @bookings = Booking.where(pickup_date: params[:start]..params[:end])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+    @bookings_pending = Booking.pending
+    @bookings_confirmed = Booking.confirmed
+    @bookings_claimed = Booking.claimed
+    @bookings_unclaimed = Booking.unclaimed
+    @bookings_overdue = Booking.overdue
+    @bookings_returned = Booking.returned
   end
-  
+
+  def sort
+    params[:order].each do |key, value|
+      Booking.find(value[:id]).update(position: value[:position])
+    end
+
+    render body: nil
+  end
+
   def index
     @bookings = current_user.bookings
     @users = User.joins(:bookings).distinct
@@ -16,8 +35,12 @@ class BookingsController < ApplicationController
     session[:booking_id] = @booking.id
   end
 
+  # POST /bookings
+  # POST /bookings.json
   def create
-    @booking = current_booking
+    @booking = Booking.new(booking_params)
+    @booking.save!
+
   end
 
   def edit
@@ -31,7 +54,11 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.update(booking_params)
-        format.html { redirect_to booking_path, notice: 'Booking was successfully updated.' }
+        if logged_in?(:labor_staff)
+          format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully updated.' }
+        else
+          format.html { redirect_to bookings_path, notice: 'Booking was successfully updated.' }
+        end
       else
         format.html { render :edit }
       end
@@ -41,7 +68,6 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @booking_items = @booking.booking_items
-    @labor_item = Equipment.joins(:booking_items)
   end
 
   def destroy
@@ -55,14 +81,15 @@ class BookingsController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to booking_path, notice: 'Booking was removed.' }
+      format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was removed.' }
     end
   end
 
-private
+  private
   def booking_params
     params.require(:booking).permit(:pickup_date,
                                     :return_date,
+                                    :user_id,
                                     :current_user,
                                     :project_id,
                                     :booking_status_id,
@@ -70,8 +97,10 @@ private
                                     )
 
   end
-private
+
+  private
   def users
     User.joins(:bookings)
   end
 end
+

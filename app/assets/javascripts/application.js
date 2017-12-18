@@ -10,19 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
+//= require jquery-ui
 //= require rails-ujs
 //= require turbolinks
+//= require Chart.bundle
+//= require chartkick
+//= require html.sortable
 //= require_tree .
-//= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
-
 //= require moment
 //= require fullcalendar
-
-$('#calendar').fullCalendar({});
-$('.datepicker').datepicker({
-    startDate: '-3d'
-});
 

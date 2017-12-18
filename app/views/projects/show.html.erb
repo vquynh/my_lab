@@ -6,15 +6,15 @@
         <div class="row">
 
           <div class="col-xs-12 col-md-6">
-            <%= image_tag @project.main_image, class: "img-fluid" %>
+            <%= image_tag project_img(@project.main_image, 'main'), width: '100%', class: "img-fluid" %>
           </div>
 
           <div class="col-xs-12 col-md-6">
             <div class="card-body">
               <h2 class="card-title"><%= @project.name %></h2>
               <p class="card-text"><%= @project.description %></p>
-              <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-secondary" if logged_in?(:labor_staff) %>
-              <%= link_to 'Back', projects_path, class: "btn btn-primary" %>
+              <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-primary" if logged_in?(:labor_staff) %>
+              <%= link_to 'See all projects', projects_path, class: "btn btn-outline-primary" %>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="card-body">
               <% if @usually_booked_items.size == 0  %>
                   <p class="card-text">No equipment has been booked for this project. Be the first?</p>
-                  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-primary ml" %>
+                  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-outline-primary ml" %>
               <% else %>
                   <p class="card-text">Student who choose this project usually book:</p>
               <% end %>
@@ -42,6 +42,7 @@
                 <p class="card-text"><%= usually_booked_item.description %></p>
               </div>
             </div>
+          </div>
           <% end %>
         </div>
 
@@ -49,6 +50,5 @@
     </div>
   </div>
 </div>
-
 
 

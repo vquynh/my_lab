@@ -1,9 +1,14 @@
 <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
   <div class="card h-100">
-    <%= image_tag labor_item.thumb_image, class: "card-img-top" unless labor_item.thumb_image.nil? %>
+    <%= image_tag equipment_img(labor_item.thumb_image, 'thumb'), class: "card-img-top", width: '100%' %>
     <div class="card-body">
-      <h6 class="card-title"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></h6>
-      <p class="card-text"><%= labor_item.description %></p>
+      <h4 class="card-title"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></h4>
+      <div class="collapse-group">
+        <p class="card-text">
+          <span><%=labor_item.description[0..29]%></span><span class="collapse" id="viewdetails<%= labor_item.id %>"><%=labor_item.description[30..labor_item.description.length]%></span>
+          <a class="view-details" data-toggle="collapse" data-target="#viewdetails<%= labor_item.id %>" aria-expanded="false" aria-controls="viewdetails<%= labor_item.id %>">More... &raquo;</a>
+        </p>
+      </div>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><%= "Total supply: " + labor_item.quantity.to_s %></li>
@@ -11,17 +16,26 @@
     </ul>
     <div class="card-body">
       <% if logged_in?(:labor_staff) %>
-        <button class="btn btn-primary"><%= link_to "Edit", edit_equipment_path(labor_item) %></button>
-        <button class="btn btn-danger"><%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        <%= link_to "Edit", edit_equipment_path(labor_item), class:"btn btn-primary" %>
+        <%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
       <% else %>
         <%= form_for @booking_item, remote: true do |f| %>
-          <div class="input-group">
-            <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
-            <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
-            <span class="input-group-btn">
-              <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>
-            </span>
-          </div>
+          <% if labor_item.available_quantity(params[:pickup_date], params[:return_date]) == 0 %>
+            <div class="input-group">
+              <span class="input-group-btn tooltip-toggle" aria-label="Try another day" tabindex="0">
+                  <%= f.submit "Currently Booked", class: "btn btn-light", disabled: 'true' if logged_in?(:user) %>
+              </span>
+            </div>
+
+          <% else %>
+            <div class="input-group tooltip-toggle" aria-label="Minimum: 1, maximum: available amount" tabindex="0">
+              <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
+              <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
+              <span class="input-group-btn">
+                  <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>
+              </span>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>

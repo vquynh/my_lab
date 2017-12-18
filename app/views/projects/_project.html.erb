@@ -1,11 +1,11 @@
 <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
   <div class="card h-100">
-	<%= image_tag project.thumb_image, class: "card-img-top" unless project.thumb_image.nil? %>
+    <%= image_tag project_img(project.thumb_image, 'thumb') , class: "card-img-top"%>
 	<div class="card-body">
 	  <h6 class="card-title"><%= link_to project.name, project_show_path(project)  %></h6>
 	  <p class="card-text"><%= project.description %></p>
 	</div>
-	<% if logged_in?(:labor_staff) %> 
+	<% if logged_in?(:labor_staff) %>
 	<button class="btn btn-primary"><%= link_to "Edit", edit_project_path(project) %></button>
 	<button class="btn btn-danger"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></button>
 	<% end %>

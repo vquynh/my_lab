@@ -16,6 +16,8 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "jquery-ui";
+
 
 /*
  * Alerts and Notices
@@ -44,6 +46,10 @@
   margin-top: 4rem;
  }
 
+ .padding-top {
+  padding-top: 2rem;
+ }
+
 
 /*
  * Sidebar
@@ -63,3 +69,109 @@
     display: block;
   }
 }
+
+/*
+ * FOR Tooltip
+ */
+
+.tooltip-toggle {
+  cursor: pointer;
+  position: relative;
+
+  svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  //Tooltip text container
+  &::before {
+    position: absolute;
+    top: 40px;
+    left: -10px;
+    background-color: #2B222A;
+    border-radius: 5px;
+    color: #fff;
+    content: attr(aria-label); //This pulls in the text from the element with the tooltip
+    padding: 0.1rem;
+    text-transform: none;
+    transition: all 0.5s ease;
+    width: 200px;
+  }
+
+  //Setting up the transition
+  &::before,
+  &::after {
+    color: #efefef;
+    font-family: monospace;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  //Triggering the transition
+  &:focus::before,
+  &:focus::after,
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    transition: all 0.75s ease;
+  }
+}
+
+
+
+
+/*--------------Sortable Bookings--------------*/
+
+.task-panel {
+  background: #fff;
+  text-align: left;
+  box-shadow: 0px 3px 2px #aab2bd;
+  margin: 5px;
+
+}
+.panel-body {
+  padding: 5px;
+}
+
+.panel-heading {
+  text-align: center;
+}
+
+.pending li {
+  border-left-color: #5cb3fd;
+}
+
+.confirmed li {
+  border-left-color: #5cb85c;
+}
+
+.claimed li {
+  border-left-color: #efe24b;
+}
+
+.unclaimed li {
+  border-left-color: #fd7e14;
+}
+
+.overdue li {
+  border-left-color: #B00100;
+}
+
+#sortable {
+  list-style-type: none;
+  margin: 0 0 20px 0;
+  padding: 0;
+  width: 100%;
+}
+#sortable li {
+  padding-left: 3em;
+  font-size: 12px;
+  border-top: 0;
+  border-bottom-color: ghostwhite;
+  border-right: 0;
+  border-radius: 0;
+  margin-bottom: 0.5rem;
+}
+

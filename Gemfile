@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.1'
+gem 'rails', '~>5.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -19,18 +19,23 @@ gem 'sass-rails', '~> 5.0'
 # Full calendar
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-#Use bootstrap
-gem 'bootstrap', '~> 4.0.0.beta2'
-gem 'bootstrap-datepicker-rails' # For showing calender in date fields insane
+# bootstrap, javascript stuffs
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'bootstrap-datepicker-rails' # For showing calender in date fields
 gem 'jquery-rails'
-gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+# chart
+gem 'chartkick', '~> 2.2.0'
+gem 'groupdate'
 
 gem 'redis-rails', '~> 5.0', '>= 5.0.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 1.2', '>= 1.2.1'
+gem 'carrierwave-aws', '~> 1.3'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

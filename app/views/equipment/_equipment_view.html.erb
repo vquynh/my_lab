@@ -12,3 +12,15 @@
 <% if session[:source] %>
     <p> Thanks for visiting Mylab from <%= session[:source] %> </p>
 <% end %>
+
+<script>
+    $('.view-details').click(function(){
+        var $this = $(this);
+        $this.toggleClass('view-details');
+        if($this.hasClass('view-details')){
+            $this.text('More... »');
+        } else {
+            $this.text('... »Less');
+        }
+    });
+</script>

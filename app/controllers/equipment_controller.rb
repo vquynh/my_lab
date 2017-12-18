@@ -78,6 +78,7 @@ class EquipmentController < ApplicationController
 
   def show
     @labor_item = Equipment.find(params[:id])
+    define_booking_and_booking_item
     @page_title = "Mylab #{@labor_item.name}"
   end
 
