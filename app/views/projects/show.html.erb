@@ -23,8 +23,8 @@
           <div class="col-12">
             <div class="card-body">
               <% if @usually_booked_items.size == 0  %>
-                  <p class="card-text">No equipment has been booked for this project. Be the first?</p>
-                  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-outline-primary ml" %>
+                  <p class="card-text">No equipment has been booked for this project. Be the first one to reserve an item?</p>
+                  <%= link_to "See all items", equipment_index_path, class: "btn btn-outline-primary ml" %>
               <% else %>
                   <p class="card-text">Student who choose this project usually book:</p>
               <% end %>

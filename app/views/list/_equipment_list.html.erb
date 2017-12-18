@@ -15,8 +15,8 @@
 
   <div class="alert alert-info" role="alert">
     There are no items in your equipment list.  Please go to equipment menu and add some items to your list.
+    <%= link_to "To Equipment", equipment_index_path, class: "btn btn-outline-primary" %>
   </div>
-  <%= link_to "To Equipment", equipment_index_path, class: "btn btn-primary" %>
 
 <% else %>
 
