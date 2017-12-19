@@ -15,7 +15,7 @@
       <li class="list-group-item"><%= "Available: " + labor_item.available_quantity(params[:pickup_date], params[:return_date]).to_s %></li>
     </ul>
     <div class="card-body">
-      <% if logged_in?(:labor_staff) %>
+      <% if logged_in?(:admin) %>
         <%= link_to "Edit", edit_equipment_path(labor_item), class:"btn btn-primary" %>
         <%= link_to "Delete", equipment_path(labor_item), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
       <% else %>

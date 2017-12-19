@@ -1,6 +1,6 @@
 class EquipmentController < ApplicationController
   access all: %i[show index el measure misc computer audio video],
-         user: {except: %i[destroy new create update edit]}, labor_staff: :all
+         user: {except: %i[destroy new create update edit]}, admin: :all
 
   def index
     @labor_items = Equipment.search(params[:search])

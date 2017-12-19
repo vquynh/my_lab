@@ -14,7 +14,7 @@
     <%= login_helper %>
 
     <%= yield %>
-    <% if logged_in?(:labor_staff) %>
+    <% if logged_in?(:admin) %>
       <%= render "shared/admin_application_nav"%>
     <% else%>
       <%= render "shared/application_nav"%>

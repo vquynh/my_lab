@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   devise_for :users, path:'', path_names: {sign_in: 'login', sign_out: 'logout'}
 
+  resources :users, except: [:show]
+
   resources :projects, except: [:show]
 
   resources :equipment, except: [:show]
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   get 'projects/:id', to: 'projects#show', as: 'project_show'
+  get 'users/:id', to: 'users#show', as: 'user_show'
 
   get 'electric-equipment', to: 'equipment#el'
 

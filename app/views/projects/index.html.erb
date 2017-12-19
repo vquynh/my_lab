@@ -1,5 +1,5 @@
 <div class="container ml-content pt-4">
-  <%= link_to "Add New Project", new_project_path if logged_in?(:labor_staff)  %>
+  <%= link_to "Add New Project", new_project_path if logged_in?(:admin)  %>
   <div class="row">
     <%= render @projects %>
    </div>

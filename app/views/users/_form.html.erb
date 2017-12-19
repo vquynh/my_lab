@@ -1,0 +1,54 @@
+      
+<%= form_for(@user, remote: true) do |form| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, autocomplete: "off", class: "form-control"  %>
+      </div>
+      <div class="form-group">
+        <%= form.label :street %>
+        <%= form.text_field :street, autocomplete: "off", class: "form-control"  %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :matriculation_number %>
+        <%= form.text_field :matriculation_number, class: "form-control" %>
+      </div>
+      <% if current_user.id == @user.id %>
+        <div class="form-group">
+          <span>Current role : </span><%= @user.roles.first.to_s %>
+          <div class="badge badge-warning">
+            You cannot change your own role.
+          </div>
+        </div>
+      <% else %>
+        <div class="form-group">
+          <%= form.label :roles %>
+          <%= form.select :roles, %w(user admin), class: "form-control"  %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= form.submit "Save", class: "btn btn-primary btn-block"   %>
+      </div>
+    </div>
+    <% if logged_in?(:admin) %>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= link_to 'Delete',
+                    user,
+                    method: :delete,
+                    class: 'btn btn-danger btn-block',
+                    data: { confirm: 'Are you sure?' },
+                    remote: true unless @user.new_record? %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+      

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   layout "application"
-  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, labor_staff: :all
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, admin: :all
 
 
   def index

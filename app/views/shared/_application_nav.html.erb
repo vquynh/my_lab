@@ -21,18 +21,21 @@
       <li class="nav-item">
           <%= link_to "Projects", projects_path, class: 'nav-link' %>
       </li>
-      <% if !logged_in?(:labor_staff) %>
+      <% if !logged_in?(:admin) %>
         <li class="nav-item">
           <%= link_to "My List", mylist_path, class: 'nav-link'%>
         </li>
       <% end %>
       <li class="nav-item">
-          <%= link_to "Booking", bookings_path, class: 'nav-link' if logged_in?(:user) && !logged_in?(:labor_staff) %>
-          <%= link_to "Booking", indexadmin_bookings_path, class: 'nav-link' if logged_in?(:labor_staff) %>
+          <%= link_to "Booking", bookings_path, class: 'nav-link' if logged_in?(:user) && !logged_in?(:admin) %>
+          <%= link_to "Booking", indexadmin_bookings_path, class: 'nav-link' if logged_in?(:admin) %>
       </li>
-      <% if logged_in?(:labor_staff) %>
+      <% if logged_in?(:admin) %>
         <li class="nav-item">
           <%= link_to "Admin Board", admin_board_path, class: 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Users", users_path, class: 'nav-link'%>
         </li>
       <% end %>
     </ul>

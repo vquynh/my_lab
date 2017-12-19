@@ -1,7 +1,7 @@
 <li class="list-primary list-group-item list-group-item-action card" data-id="<%= booking.id %>">
   <div class="card-title">
     <span> <%=  link_to "Booking" + booking.id.to_s, booking_path(booking) %> </span>
-    <% if logged_in?(:labor_staff) %>
+    <% if logged_in?(:admin) %>
       <span class="badge bg-theme"><%= booking.user.name %></span>
 
       <%= link_to "✎", edit_booking_path(booking), method: :get, remote: true %>

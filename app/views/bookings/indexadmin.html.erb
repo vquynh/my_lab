@@ -14,7 +14,7 @@
             </div>
             <div class="panel-body">
               <div class="task-content">
-                <ul id='sortable' class="pending <%= "sortable" if logged_in?(:labor_staff) %> ">
+                <ul id='sortable' class="pending <%= "sortable" if logged_in?(:admin) %> ">
                   <%= render @bookings_pending %>
 
                 </ul>
@@ -27,7 +27,7 @@
             <div class="panel-heading"> Confirmed </div>
             <div class="panel-body">
               <div class="task-content">
-                <ul id='sortable' class="confirmed <%= "sortable" if logged_in?(:labor_staff) %> ">
+                <ul id='sortable' class="confirmed <%= "sortable" if logged_in?(:admin) %> ">
                   <%= render @bookings_confirmed %>
 
                 </ul>
@@ -40,7 +40,7 @@
             <div class="panel-heading">Claimed</div>
             <div class="panel-body">
               <div class="task-content">
-                <ul id='sortable' class="claimed <%= "sortable" if logged_in?(:labor_staff) %> ">
+                <ul id='sortable' class="claimed <%= "sortable" if logged_in?(:admin) %> ">
                   <%= render @bookings_claimed %>
 
                 </ul>
@@ -53,7 +53,7 @@
             <div class="panel-heading">Unclaimed </div>
             <div class="panel-body">
               <div class="task-content">
-                <ul id='sortable' class="unclaimed <%= "sortable" if logged_in?(:labor_staff) %> ">
+                <ul id='sortable' class="unclaimed <%= "sortable" if logged_in?(:admin) %> ">
                   <%= render @bookings_unclaimed %>
                 </ul>
               </div>
@@ -65,7 +65,7 @@
             <div class="panel-heading">Overdue </div>
             <div class="panel-body">
               <div class="task-content">
-                <ul id='sortable' class="overdue <%= "sortable" if logged_in?(:labor_staff) %> ">
+                <ul id='sortable' class="overdue <%= "sortable" if logged_in?(:admin) %> ">
                   <%= render @bookings_overdue %>
 
                 </ul>
@@ -78,7 +78,7 @@
             <div class="panel-heading">Returned </div>
             <div class="panel-body">
               <div class="task-content">
-                <ul id='sortable' class="returned <%= "sortable" if logged_in?(:labor_staff) %> ">
+                <ul id='sortable' class="returned <%= "sortable" if logged_in?(:admin) %> ">
                   <%= render @bookings_returned %>
 
                 </ul>

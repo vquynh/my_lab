@@ -1,0 +1,22 @@
+<tr>
+  <td><%= user.name %></td>
+  <td class="hidden-phone"><%= user.street %></td>
+  <td><%= user.matriculation_number %> </td>
+  <% if user.roles.first.to_s == 'admin' %>
+    <td><span class="badge badge-primary"><%= user.roles.first.to_s %> </span></td>
+  <% else %>
+    <td><span class="badge badge-default"><%= user.roles.first.to_s %> </span></td>
+  <% end %>
+  <td>
+      <%= link_to "Edit",
+                  edit_user_path(user),
+                  class: 'btn btn-primary',
+                  remote: true %>
+      <%= link_to 'Delete',
+                  user,
+                  method: :delete,
+                  class: 'btn btn-danger',
+                  data: { confirm: 'Are you sure you want to delete this user?' },
+                  remote: true %>
+  </td>
+</tr>

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  access user: {except: [:destroy, :indexadmin]}, labor_staff: :all
+  access user: {except: [:destroy, :indexadmin]}, admin: :all
 
 
   def indexadmin
@@ -54,7 +54,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.update(booking_params)
-        if logged_in?(:labor_staff)
+        if logged_in?(:admin)
           format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully updated.' }
         else
           format.html { redirect_to bookings_path, notice: 'Booking was successfully updated.' }
