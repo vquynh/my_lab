@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Lockup::Engine, at: '/lockup'
+
   get "admin-board" => "admin_board#show"
 
   get 'booking_items/create'
