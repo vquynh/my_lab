@@ -3,8 +3,24 @@
     <%= image_tag project_img(project.thumb_image, 'thumb') , class: "card-img-top"%>
 	<div class="card-body">
 	  <h6 class="card-title"><%= link_to project.name, project_show_path(project)  %></h6>
-	  <p class="card-text"><%= project.description %></p>
-	</div>
+    <p class="card-text">
+      <p
+      class="collapse inline"
+      id="viewdetails<%= project.id %>"
+      >
+        <%=project.description%>
+      </p>
+      <button
+      class="view-details inline btn btn-outline-secondary"
+      data-toggle="collapse"
+      data-target="#viewdetails<%= project.id %>"
+      aria-expanded="false"
+      aria-controller="viewdetails<%= project.id %>"
+      >
+        Description
+      </button>
+    </p>
+  </div>
 	<% if logged_in?(:admin) %>
 	<button class="btn btn-primary"><%= link_to "Edit", edit_project_path(project) %></button>
 	<button class="btn btn-danger"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></button>

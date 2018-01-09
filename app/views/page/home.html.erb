@@ -1,4 +1,4 @@
-<section class="jumbotron jumbotron-fluid ml-content">
+<section class="jumbotron bg jumbotron-fluid ml-content">
   <div class="container">
     <h1 class="display-3">My Lab</h1>
     <h5 class="">A demo website for booking and managing laboratory equipment.</h5>
@@ -16,7 +16,23 @@
           <%= image_tag equipment_img(new_item.thumb_image, 'thumb'), class: "card-img-top", width: '100%' %>
           <div class="card-body">
             <h4 class="card-title"><%= link_to new_item.name, equipment_path(new_item)  %></h4>
-            <p class="card-text"><%= new_item.description %></p>
+              <p class="card-text">
+                <p
+                class="collapse inline"
+                id="viewdetails<%= new_item.id %>"
+                >
+                  <%=new_item.description%>
+                </p>
+                <button
+                class="view-details inline btn btn-outline-secondary"
+                data-toggle="collapse"
+                data-target="#viewdetails<%= new_item.id %>"
+                aria-expanded="false"
+                aria-controller="viewdetails<%= new_item.id %>"
+                >
+                  Description
+                </button>
+              </p>
           </div>
         </div>
       </div>
@@ -30,7 +46,23 @@
           <%= image_tag project_img(new_project.thumb_image, 'thumb'), class: "card-img-top", width: '100%' %>
           <div class="card-body">
             <h4 class="card-title"><%= link_to new_project.name, project_path(new_project) %></h4>
-            <p class="card-text"><%= new_project.description %></p>
+            <p class="card-text">
+              <p
+              class="collapse inline"
+              id="viewdetails<%= new_project.id %>"
+              >
+                <%=new_project.description%>
+              </p>
+              <button
+              class="view-details inline btn btn-outline-secondary"
+              data-toggle="collapse"
+              data-target="#viewdetails<%= new_project.id %>"
+              aria-expanded="false"
+              aria-controller="viewdetails<%= new_project.id %>"
+              >
+                Description
+              </button>
+            </p>
           </div>
         </div>
       </div>
@@ -44,7 +76,23 @@
           <%= image_tag equipment_img(recent_item.thumb_image, 'thumb'), class: "card-img-top", width: '100%'  %>
           <div class="card-body">
             <h4 class="card-title"><%= link_to recent_item.name, equipment_path(recent_item)  %></h4>
-            <p class="card-text"><%= recent_item.description %></p>
+            <p class="card-text">
+              <p
+              class="collapse inline"
+              id="viewdetails<%= recent_item.id %>"
+              >
+                <%=recent_item.description%>
+              </p>
+              <button
+              class="view-details inline btn btn-outline-secondary"
+              data-toggle="collapse"
+              data-target="#viewdetails<%= recent_item.id %>"
+              aria-expanded="false"
+              aria-controller="viewdetails<%= recent_item.id %>"
+              >
+                Description
+              </button>
+            </p>
           </div>
         </div>
       </div>
@@ -59,7 +107,23 @@
             <%= image_tag equipment_img(fav_item.thumb_image, 'thumb'), class: "card-img-top", width: '100%' %>
             <div class="card-body">
               <h4 class="card-title"><%= link_to fav_item.name, equipment_path(fav_item)  %></h4>
-              <p class="card-text"><%= fav_item.description %></p>
+              <p class="card-text">
+                <p
+                class="collapse inline"
+                id="viewdetails<%= fav_item.id %>"
+                >
+                  <%=fav_item.description%>
+                </p>
+                <button
+                class="view-details inline btn btn-outline-secondary"
+                data-toggle="collapse"
+                data-target="#viewdetails<%= fav_item.id %>"
+                aria-expanded="false"
+                aria-controller="viewdetails<%= fav_item.id %>"
+                >
+                  Description
+                </button>
+              </p>
             </div>
           </div>
         </div>

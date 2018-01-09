@@ -5,8 +5,21 @@
       <h4 class="card-title"><%= link_to (labor_item.name + " - " +(labor_item.inv_nr).to_s), equipment_show_path(labor_item)  %></h4>
       <div class="collapse-group">
         <p class="card-text">
-          <span><%=labor_item.description[0..29]%></span><span class="collapse" id="viewdetails<%= labor_item.id %>"><%=labor_item.description[30..labor_item.description.length]%></span>
-          <a class="view-details" data-toggle="collapse" data-target="#viewdetails<%= labor_item.id %>" aria-expanded="false" aria-controls="viewdetails<%= labor_item.id %>">More... &raquo;</a>
+          <p
+          class="collapse inline"
+          id="viewdetails<%= labor_item.id %>"
+          >
+            <%=labor_item.description%>
+          </p>
+          <button
+          class="view-details inline btn btn-outline-secondary"
+          data-toggle="collapse"
+          data-target="#viewdetails<%= labor_item.id %>"
+          aria-expanded="false"
+          aria-controller="viewdetails<%= labor_item.id %>"
+          >
+            Show description
+          </button>
         </p>
       </div>
     </div>
