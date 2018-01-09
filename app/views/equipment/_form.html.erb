@@ -16,10 +16,10 @@
           <%= f.number_field :quantity, autocomplete: "off", class: "form-control"  %>
         </div>
 
-        <div class="form-group  col-md-3">
-          <%= f.label :status  %>
-          <%= f.collection_select :equipment_status_id, EquipmentStatus.all,:id,:name, include_blank: true, autocomplete: "off", class: "form-control"  %>
-        </div>
+<!--        <div class="form-group  col-md-3">
+          <!-- f.label :status  %>
+          <!-- f.collection_select :equipment_status_id, EquipmentStatus.all,:id,:name, include_blank: true, autocomplete: "off", class: "form-control"  %>
+        </div>-->
 
         <div class="form-group  col-md-1">
           <%= f.label :category_id %>
