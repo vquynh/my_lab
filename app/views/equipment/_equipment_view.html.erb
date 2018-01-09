@@ -1,7 +1,7 @@
 <main class="col-12 col-md-9 col-xl-10 px-4 pt-4">
   <%= yield %>
 
-  <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-secondary add-new" if logged_in?(:admin) %>
+  <%= link_to "Add New Equipment", new_equipment_path, class: "btn btn-success" if logged_in?(:admin) %>
 
   <div class="row">
     <%= render partial: 'labor_item', collection: @labor_items, booking_item: @booking_item %>
