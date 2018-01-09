@@ -91,7 +91,7 @@ class EquipmentController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to equipment_url, notice: 'Item was removed.' }
+      format.html { redirect_to equipment_index_path, notice: 'Item was removed.' }
     end
   end
 
