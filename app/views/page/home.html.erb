@@ -1,13 +1,13 @@
-<section class="jumbotron jumbotron-fluid">
+<section class="jumbotron jumbotron-fluid ml-content">
   <div class="container">
     <h1 class="display-3">My Lab</h1>
-    <p class="lead">A demo website for booking and managing laboratory equipment.</p>
+    <h5 class="">A demo website for booking and managing laboratory equipment.</h5>
   </div>
 </section>
 
 <div class="album">
   <div class="container">
-    <p>Hi, <%= current_user.first_name %> </p>
+    <p>Hi <%= current_user.first_name %> </p>
     <h3 class="padding-top">New Equipment</h3>
     <div class="row">
       <% @new_items.each do |new_item| %>
