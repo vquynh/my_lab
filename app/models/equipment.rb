@@ -47,13 +47,13 @@ class Equipment < ApplicationRecord
                                .joins(:booking_items)
                                .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', "%#{pickup_date}%", "%#{return_date}%", id)
                                .group(:equipment_id)
-                            .sum(:quantity)
+                            .sum(:booking_quantity)
     else
       booked_quantity = Booking
                             .joins(:booking_items)
                             .where('(pickup_date, return_date) OVERLAPS (?,?) AND equipment_id=?', Date.today, Date.today + 1.days, id)
                             .group(:equipment_id)
-                            .sum(:quantity)
+                            .sum(:booking_quantity)
 
     end
     booked_quantity.empty? ? quantity : quantity - booked_quantity.reduce(:-).drop(1).join.to_i
