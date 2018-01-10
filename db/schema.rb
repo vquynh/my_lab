@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207101204) do
+ActiveRecord::Schema.define(version: 20180110090207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20171207101204) do
   create_table "booking_items", force: :cascade do |t|
     t.bigint "equipment_id"
     t.bigint "booking_id"
-    t.integer "quantity"
+    t.integer "booking_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_booking_items_on_booking_id"

@@ -34,14 +34,9 @@
                 <div class="col-4 col-sm-3 col-md-2 mb-3">
                   <%= image_tag equipment_img(labor_item.thumb_image, 'thumb'), class: "img-fluid rounded" %>
                 </div>
-
                 <div class="col-4 col-sm-12 col-md-6">
                   <h6><%= labor_item.name + " - " +(labor_item.inv_nr).to_s %></h6>
                 </div>
-
-                <span class="col-4 col-sm-12 col-md-6">
-                  <%= labor_item.quantity.to_i  %>
-                </span>
               </div>
             <% end %>
           </div>
