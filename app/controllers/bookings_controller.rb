@@ -39,7 +39,17 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-    @booking.save!
+    respond_to do |format|
+      if @booking.save(booking_params)
+        if logged_in?(:admin)
+          format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully created.' }
+        else
+          format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
+        end
+      else
+        format.html { render :new }
+      end
+    end
 
   end
 
