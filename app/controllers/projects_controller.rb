@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_path, notice: 'Project was successfully added.' }
+        format.html { redirect_to projects_path }
       else
         format.html { render :new }
       end
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
+        format.html { redirect_to projects_path }
       else
         format.html { render :edit }
       end
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to project_url, notice: 'Project was removed.' }
+      format.html { redirect_to project_url}
     end
   end
 

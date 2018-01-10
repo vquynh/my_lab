@@ -42,9 +42,9 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save(booking_params)
         if logged_in?(:admin)
-          format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully created.' }
+          format.html { redirect_to indexadmin_bookings_path }
         else
-          format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
+          format.html { redirect_to bookings_path }
         end
       else
         format.html { render :new }
@@ -65,9 +65,9 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.update(booking_params)
         if logged_in?(:admin)
-          format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was successfully updated.' }
+          format.html { redirect_to indexadmin_bookings_path }
         else
-          format.html { redirect_to bookings_path, notice: 'Booking was successfully updated.' }
+          format.html { redirect_to bookings_path }
         end
       else
         format.html { render :edit }
@@ -92,7 +92,7 @@ class BookingsController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to indexadmin_bookings_path, notice: 'Booking was removed.' }
+      format.html { redirect_to indexadmin_bookings_path}
     end
   end
 

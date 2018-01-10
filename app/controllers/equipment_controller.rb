@@ -53,7 +53,7 @@ class EquipmentController < ApplicationController
 
     respond_to do |format|
       if @labor_item.save
-        format.html { redirect_to equipment_index_path, notice: 'Equipment item was successfully created.' }
+        format.html { redirect_to equipment_index_path }
       else
         format.html { render :new }
       end
@@ -69,7 +69,7 @@ class EquipmentController < ApplicationController
 
     respond_to do |format|
       if @labor_item.update(equipment_params)
-        format.html { redirect_to equipment_index_path, notice: 'Item was successfully updated.' }
+        format.html { redirect_to equipment_index_path }
       else
         format.html { render :edit }
       end
@@ -91,7 +91,7 @@ class EquipmentController < ApplicationController
 
     # Redirect
     respond_to do |format|
-      format.html { redirect_to equipment_index_path, notice: 'Item was removed.' }
+      format.html { redirect_to equipment_index_path}
     end
   end
 
