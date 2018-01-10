@@ -22,8 +22,11 @@
     </p>
   </div>
 	<% if logged_in?(:admin) %>
-	<button class="btn btn-primary"><%= link_to "Edit", edit_project_path(project) %></button>
-	<button class="btn btn-danger"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></button>
-	<% end %>
+    <div class="card-body">
+
+      <%= link_to 'Edit',edit_project_path(project), class: "btn btn-primary" %>
+      <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+    </div>
+  <% end %>
   </div>
 </div>
