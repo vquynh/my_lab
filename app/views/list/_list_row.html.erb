@@ -14,7 +14,7 @@
         <div class="col-12 col-sm-12 col-md-6">
           <%= form_for booking_item do |f| %>
             <div class="input-group tooltip-toggle text-right" aria-label="Minimum: 1, maximum: available amount" tabindex="0">
-              <span class="input-group col-6">
+              <span class="input-group col-7">
                 <%= f.number_field :quantity, value: booking_item.quantity.to_i, class: "form-control", min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date])  %>
               </span>
               <span class="col-6 text-right">
