@@ -86,7 +86,7 @@ class BookingsController < ApplicationController
 
     # Destroy/Delete the record
     @booking_items = @booking.booking_items
-    @booking_items.destroy
+    @booking_items.each(&:destroy)
     @booking.destroy
 
     # Redirect
