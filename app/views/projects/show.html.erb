@@ -39,7 +39,23 @@
               <%= image_tag usually_booked_item.thumb_image, class: "card-img-top" unless usually_booked_item.thumb_image.nil? %>
               <div class="card-body">
                 <h6 class="card-title"><%= link_to usually_booked_item.name, equipment_path(usually_booked_item)  %></h6>
-                <p class="card-text"><%= usually_booked_item.description %></p>
+                <p class="card-text">
+                  <p
+                  class="collapse inline"
+                  id="viewdetails<%= usually_booked_item.id %>"
+                  >
+                    <%=usually_booked_item.description%>
+                  </p>
+                  <button
+                  class="view-details inline btn btn-outline-secondary"
+                  data-toggle="collapse"
+                  data-target="#viewdetails<%= usually_booked_item.id %>"
+                  aria-expanded="false"
+                  aria-controller="viewdetails<%= usually_booked_item.id %>"
+                  >
+                    Description
+                  </button>
+                </p>
               </div>
             </div>
           </div>

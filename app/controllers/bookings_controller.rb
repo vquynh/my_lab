@@ -56,7 +56,7 @@ class BookingsController < ApplicationController
   def edit
     @booking = Booking.find(params[:id])
     @booking_items = @booking.booking_items
-    @labor_item = Equipment.joins(:booking_items)
+    @labor_items = Equipment.joins(:booking_items)
   end
 
   def update
@@ -78,6 +78,8 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @booking_items = @booking.booking_items
+    @labor_items = Equipment.joins(:booking_items)
+
   end
 
   def destroy
