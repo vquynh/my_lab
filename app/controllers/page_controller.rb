@@ -3,7 +3,9 @@ class PageController < ApplicationController
     @new_items = Equipment.last(3)
     @new_projects = Project.last(3)
     @count = BookingItem.group(:equipment_id).count.first
-    @recently_booked_items = Equipment.joins(:booking_items).distinct.last(3)
+    last_booking_item_ids = BookingItem.distinct.last(3)
+    @recently_booked_items = Equipment.joins(:booking_items)
+                                 .where('id IN (?)', last_booking_item_ids)
 
     fav_equipment_ids = BookingItem.select('equipment_id')
                             .group(:equipment_id)
