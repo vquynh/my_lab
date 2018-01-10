@@ -78,7 +78,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @booking_items = @booking.booking_items
-    @labor_items = Equipment.includes(:booking_items).where("booking_id = ?", params[:id])
+    @labor_items = Equipment.joins(:booking_items).where("booking_id = ?", params[:id])
   end
 
   def destroy
