@@ -39,11 +39,9 @@
                   <h6><%= labor_item.name + " - " +(labor_item.inv_nr).to_s %></h6>
                 </div>
 
-                <div class="col-4 col-sm-12 col-md-6">
-                  <div class="input-group tooltip-toggle text-right" aria-label="Minimum: 1, maximum: available amount" tabindex="0">
-                    <%= labor_item.quantity.to_i  %>
-                  </div>
-                </div>
+                <span class="col-4 col-sm-12 col-md-6">
+                  <%= labor_item.quantity.to_i  %>
+                </span>
               </div>
             <% end %>
           </div>
