@@ -42,7 +42,7 @@
 
           <% else %>
             <div class="input-group tooltip-toggle" aria-label="Minimum: 1, maximum: available amount" tabindex="0">
-              <%= f.number_field :quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
+              <%= f.number_field :booking_quantity, value: 1, min: 1, max: labor_item.available_quantity(params[:pickup_date], params[:return_date]), class: "form-control" %>
               <%= f.hidden_field :labor_item_id, value: labor_item.id if logged_in?(:user) %>
               <span class="input-group-btn">
                   <%= f.submit "Add to List", class: "btn btn-primary" if logged_in?(:user) %>

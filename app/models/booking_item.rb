@@ -2,7 +2,7 @@ class BookingItem < ApplicationRecord
   belongs_to :equipment
   belongs_to :booking
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :booking_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :equipment_present
   validate :booking_present
   alias_attribute :labor_item_id, :equipment_id

@@ -6,7 +6,7 @@ class BookingItemsController < ApplicationController
     if same_item.nil?
       @booking_item = @booking.booking_items.new(booking_item_params)
     else
-      same_item.quantity = same_item.quantity + params[:booking_item][:quantity].to_i
+      same_item.quantity = same_item.quantity + params[:booking_item][:booking_quantity].to_i
       same_item.save!
     end
     @booking.save!
@@ -52,6 +52,6 @@ class BookingItemsController < ApplicationController
 
 private
   def booking_item_params
-    params.require(:booking_item).permit(:quantity, :labor_item_id)
+    params.require(:booking_item).permit(:booking_quantity, :labor_item_id)
   end
 end
