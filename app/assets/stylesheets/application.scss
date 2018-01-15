@@ -61,7 +61,9 @@
   top: 4rem;
   z-index: 1000;
   max-height: calc(100vh - 4rem);
-  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  @include media-breakpoint-up(md) {
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+  }
 }
 
 .ml-filter {
@@ -69,6 +71,20 @@
     display: block;
   }
 }
+
+
+/*
+ * Devise errors
+ */
+
+#error_explanation {
+  h2 {
+    font-size: 1em;
+    color: $danger;
+  }
+}
+
+
 
 /*
  * FOR Tooltip

@@ -1,54 +1,43 @@
-      
 <%= form_for(@booking, remote: true) do |form| %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= form.hidden_field :user_id, value: current_user.id if logged_in?(:user) && !logged_in?(:admin) %>
-        <%= form.label :project %>
-        <%= form.collection_select :project_id, Project.all,:id,:name, include_blank: true, class: "form-control"   %>
-      </div>
-      <div class="form-group">
-        <%= form.label :status if logged_in?(:admin) %>
-        <%= form.collection_select :booking_status_id, BookingStatus.all,:id,:name, include_blank: true, class: "form-control"  if logged_in?(:admin) %>
-      </div>
-      <div class="form-group">
-        <%= form.label :message %>
-        <%= form.text_area :message, autocomplete: "off", class: "form-control", rows: '3'  %>
-      </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.hidden_field :user_id, value: current_user.id if logged_in?(:user) && !logged_in?(:admin) %>
+      <%= form.label :project %>
+      <%= form.collection_select :project_id, Project.all,:id,:name, {:autocomplete => "off", :include_blank => "Choose Project"}, {:class => 'custom-select w-100'}   %>
     </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= form.label :user if logged_in?(:admin) %>
-        <%= form.collection_select :user_id, User.all,:id,:name, include_blank: true, class: "form-control"  if logged_in?(:admin) %>
-      </div>
-      <div class="form-group">
-        <%= form.label :pickup_date %>
-        <%= form.text_field :pickup_date, class: "form-control datepicker", :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
-      </div>
-      <div class="form-group">
-        <%= form.label :return_date %>
-        <%= form.text_field :return_date, class: "form-control", :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
-      </div>
+    <div class="form-group col-md-6">
+      <%= form.label :status if logged_in?(:admin) %>
+      <%= form.collection_select :booking_status_id, BookingStatus.all,:id,:name, {:autocomplete => "off"}, {:class => 'custom-select w-100'}  if logged_in?(:admin) %>
     </div>
-    <div class="col-md-6">
+    <div class="form-group col-md-12">
+      <%= form.label :user if logged_in?(:admin) %>
+      <%= form.collection_select :user_id, User.all,:id,:name, {:autocomplete => "off"}, {:class => 'custom-select w-100'}  if logged_in?(:admin) %>
     </div>
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= form.submit "Submit", class: "btn btn-primary btn-block"   %>
-      </div>
+    <div class="form-group col-md-6">
+      <%= form.label :pickup_date %>
+      <%= form.text_field :pickup_date, class: "form-control datepicker", :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
     </div>
-    <% if logged_in?(:admin) %>
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= link_to 'Delete',
-                    booking,
-                    method: :delete,
-                    class: 'btn btn-danger btn-block',
-                    data: { confirm: 'Are you sure?' },
-                    remote: true unless @booking.new_record? %>
-      </div>
+    <div class="form-group col-md-6">
+      <%= form.label :return_date %>
+      <%= form.text_field :return_date, class: "form-control", :data => {:provide => 'datepicker', 'date-format' => 'yyyy-mm-dd', 'date-autoclose' => 'true', 'date-start-date' => '0d'} %>
     </div>
-    <% end %>
+    <div class="form-group col-md-12">
+      <%= form.label :message %>
+      <%= form.text_area :message, autocomplete: "off", class: "form-control", rows: '3'  %>
+    </div>
   </div>
+
+  <%= form.submit "Submit", class: "btn btn-primary"   %>
+
+  <% if logged_in?(:admin) %>
+  <%= link_to 'Delete',
+    booking,
+    method: :delete,
+    class: 'btn btn-danger',
+    data: { confirm: 'Are you sure?' },
+    remote: true unless @booking.new_record? %>
+  <% end %>
+
 <% end %>
       

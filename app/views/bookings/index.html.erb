@@ -1,5 +1,17 @@
 <div class="container ml-content">
-  <h3 class="listtext">My Bookings</h3>
-  <%= render @bookings, collection: @labor_items, collection: @booking_items %>
+  <div class="row justify-content-md-center">
+    <div class="col-xs-12 col-xl-10 mt-5 mb-5">
+      <div class="card">
 
+        <div class="card-body">
+		  <h2 class="card-title">My Bookings</h2>
+		</div>
+
+		<ul class="list-group list-group-flush">
+		  <%= render @bookings, collection: @labor_items, collection: @booking_items %>
+		</ul>
+
+      </div>
+    </div>
+  </div>
 </div>

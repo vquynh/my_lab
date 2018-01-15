@@ -1,35 +1,23 @@
 <%= form_for(@project) do |form| %>
-  <div class="regist">
-    <div class="card">
-      <div class="card-block">
-        <div class="row col-md-12">
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= form.label :name %><br />
-              <%= form.text_field :name, class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= form.label :description %><br />
-              <%= form.text_area :description, autofocus: true, class: "form-control", rows: '3'  %>
-            </div>
+
+        <div class="form-row">
+          <div class="form-group col-12">
+            <%= form.label :name %><br />
+            <%= form.text_field :name, class: "form-control" %>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <div><%= form.label :main_image %></div>
-              <div><%= form.file_field :main_image, class:'btn btn-light' %></div>
-            </div>
-            <div class="form-group">
-              <div><%= form.label :thumb_image %></div>
-              <div><%= form.file_field :thumb_image, class:'btn btn-light' %></div>
-            </div>
+          <div class="form-group col-md-6">
+            <%= form.label :main_image %>
+            <%= form.file_field :main_image, class:'form-control-file' %>
           </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <%= form.submit "Save", class: 'btn btn-primary' %>
-            </div>
+          <div class="form-group col-md-6">
+            <%= form.label :thumb_image %>
+            <%= form.file_field :thumb_image, class:'form-control-file' %>
+          </div>
+          <div class="form-group col-12">
+            <%= form.label :description %><br />
+            <%= form.text_area :description, autofocus: true, class: "form-control", rows: '3'  %>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+        <%= form.submit "Save", class: 'btn btn-primary' %>
+
 <% end %>

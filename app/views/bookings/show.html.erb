@@ -1,46 +1,56 @@
-<main class="container ml-content pt-4">
+<div class="container ml-content">
+  <div class="row justify-content-md-center">
+    <div class="col-xs-12 col-xl-10 mt-5 mb-5">
+      <div class="card">
+        <div class="card-body">
 
-  <div class="row">
-    <div class="col-md-6">
-        <h3 class="card-title">Booking Details </h3>
-        <p>Created At: <%= @booking.created_at %></p>
-        <p>Pickup Date: <%= @booking.pickup_date %></p>
-        <p>Return Date: <%= @booking.return_date %></p>
-        <p>Message: <%= @booking.message %></p>
-        <%= link_to 'Edit',edit_booking_path(@booking), class: "btn btn-info" %>
-        <%= link_to 'Back',bookings_path, class: "btn btn-info" if !logged_in?(:user) %>
-        <%= link_to 'Back',indexadmin_bookings_path, class: "btn btn-info" if logged_in?(:user) %>
-    </div>
-    <div class="col-md-6">
-        <h3 class="card-title">Booking Items </h3>
-        <% if !@booking_item.nil? && @booking_item.errors.any? %>
-            <div class="alert alert-danger">
-                <ul>
-                <% @booking_item.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                    </ul>
+          <div class="row">
+            <div class="col-md-6">
+                <h3 class="card-title">Booking Details </h3>
+                <p>Booking ID: <%= @booking.id.to_s %></p>
+                <p>Created At: <%= @booking.created_at %></p>
+                <p>Pickup Date: <%= @booking.pickup_date %></p>
+                <p>Return Date: <%= @booking.return_date %></p>
+                <p>Message: <br><%= @booking.message %></p>
+                <%= link_to 'Edit',edit_booking_path(@booking), class: "btn btn-primary" %>
+                <%= link_to 'Back',bookings_path, class: "btn btn-info" if !logged_in?(:user) %>
+                <%= link_to 'Back',indexadmin_bookings_path, class: "btn btn-primary" if logged_in?(:user) %>
+            </div>
+            <div class="col-md-6">
+                <h3 class="card-title">Booking Items </h3>
+                <% if !@booking_item.nil? && @booking_item.errors.any? %>
+                    <div class="alert alert-danger">
+                        <ul>
+                        <% @booking_item.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                            </ul>
+                        <% end %>
+                    </div>
+                <% end %>
+                <% if @booking_items.size == 0 %>
+                    <p class="text-center">
+                        There are no items in the equipment list.
+                    </p>
+                    <%= link_to 'Equipment', equipment_index_path, class: "btn btn-info" if logged_in?(:user) %>
+                <% else %>
+                  <div class="list-group-item">
+                    <% @labor_items.each do |labor_item| %>
+                      <div class="row">
+                        <div class="col-4 col-sm-3 col-md-2 mb-3">
+                          <%= image_tag equipment_img(labor_item.thumb_image, 'thumb'), class: "img-fluid rounded" %>
+                        </div>
+                        <div class="col-4 col-sm-12 col-md-6">
+                          <h6><%= labor_item.name + " - " +(labor_item.inv_nr).to_s %></h6>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
                 <% end %>
             </div>
-        <% end %>
-        <% if @booking_items.size == 0 %>
-            <p class="text-center">
-                There are no items in the equipment list.
-            </p>
-            <%= link_to 'Equipment', equipment_index_path, class: "btn btn-info" if logged_in?(:user) %>
-        <% else %>
-          <div class="list-group-item">
-            <% @labor_items.each do |labor_item| %>
-              <div class="row">
-                <div class="col-4 col-sm-3 col-md-2 mb-3">
-                  <%= image_tag equipment_img(labor_item.thumb_image, 'thumb'), class: "img-fluid rounded" %>
-                </div>
-                <div class="col-4 col-sm-12 col-md-6">
-                  <h6><%= labor_item.name + " - " +(labor_item.inv_nr).to_s %></h6>
-                </div>
-              </div>
-            <% end %>
           </div>
-        <% end %>
+
+        </div>
+      </div>
     </div>
   </div>
-</main>
+</div>

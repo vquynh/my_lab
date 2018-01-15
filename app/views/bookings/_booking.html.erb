@@ -1,6 +1,6 @@
-<li class="list-primary list-group-item list-group-item-action card" data-id="<%= booking.id %>">
+<li class="list-group-item" data-id="<%= booking.id %>">
   <div class="card-title">
-    <span> <%=  link_to "Booking" + booking.id.to_s, booking_path(booking) %> </span>
+    <span> <%=  link_to "Booking #" + booking.id.to_s, booking_path(booking) %> </span>
     <% if logged_in?(:admin) %>
       <span class="badge bg-theme"><%= booking.user.name %></span>
 
