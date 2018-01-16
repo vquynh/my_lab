@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
   get 'equipment/:id', to: 'equipment#show', as: 'equipment_show'
 
-  get 'about', to: 'page#about'
+  get 'impressum', to: 'page#impressum'
 
   get 'contact', to: 'page#contact'
 
