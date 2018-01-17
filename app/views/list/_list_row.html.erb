@@ -21,7 +21,7 @@
                 <%= f.submit "Update" , class: "btn btn-primary" %>
               </span>
               <span class="col-6 text-right">
-                <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to delete the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
+                <%= link_to "Remove" , booking_item, { data: { confirm: "Are you sure you wish to remove the equipment '#{booking_item.equipment.name}' from your list" }, method: :delete, class: "btn btn-danger" } %>
               </span>
             </div>
             <br>

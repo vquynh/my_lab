@@ -15,7 +15,7 @@ class PageController < ApplicationController
     @fav_items = Equipment.where('id IN (?)', fav_equipment_ids)
   end
 
-  def about
+  def impressum
   end
 
   def contact
