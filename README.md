@@ -1,4 +1,4 @@
-# My Lab neewew
+# My Lab
 
 > A ruby on rails web application for checking availability and booking laboratory's equipments
 
@@ -19,11 +19,11 @@
   - run ``` rails db:create:all ```
   - see <a href="https://www.postgresql.org/docs/9.6/static/tutorial-install.html"> PostgreSQL Tutorial </a> for more details.
 
-* Deployment instructions
-  - run ``` rails s ``` and application can be accessed with browser in the URL:
+* Deployment (on local machine) instructions
+  - run ``` rails s ``` and application can be accessed in browser via the URL:
    http://localhost:3000/ or http://127.0.0.1:3000/
 
-### Code Example
+* Code Example
 
 ```ruby
 def my_method
