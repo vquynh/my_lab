@@ -1,6 +1,6 @@
 # My Lab
 
-> A ruby on rails web application for checking availability and booking laboratory's equipments
+> A ruby on rails web application for checking availability and booking laboratory's equipment
 
 
 * Built on
