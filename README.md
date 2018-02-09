@@ -2,6 +2,9 @@
 
 > A ruby on rails web application for checking availability and booking laboratory's equipment
 
+* Demo: http://haw-rdb-my-lab.herokuapp.com 
+Code word: rdb1718
+
 
 * Built on
   - ruby version 2.4.1
