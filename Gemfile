@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>5.1.1'
+gem 'rails', '>=5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -20,7 +20,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 # bootstrap, javascript stuffs
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem "bootstrap", ">= 4.3.1"
 gem 'bootstrap-datepicker-rails' # For showing calender in date fields
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
@@ -77,4 +77,4 @@ gem 'capistrano-rbenv', '~> 2.1'
 
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 
-ruby '2.4.2'
+ruby '>=2.6.1'
